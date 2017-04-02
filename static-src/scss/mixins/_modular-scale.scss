@@ -1,0 +1,31 @@
+// @see http://www.modularscale.com/
+
+// Functions.
+// ----------
+
+// @see https://css-tricks.com/snippets/sass/power-function/
+@function pow($number, $exponent) {
+  $value: 1;
+
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  } @else if $exponent < 0 {
+    @for $i from 1 through -$exponent {
+      $value: $value / $number;
+    }
+  }
+
+  @return $value;
+}
+
+// Mixins.
+// -------
+
+@mixin modular-scale($ms-ratio, $exponent: 0) {
+  $font-size: 1rem * pow($ms-ratio, $exponent);
+
+  font-size: $font-size;
+  line-height: $line-height * ceil($font-size / $line-height);
+}

@@ -1,0 +1,17 @@
+// Mixins.
+// -------
+
+// @see https://maximilianhoffmann.com/posts/better-font-rendering-on-osx
+// Note: this should only be used on light backgrounds, see
+//   http://www.usabilitypost.com/2012/11/05/stop-fixing-font-smoothing/
+
+@mixin font-smoothing($value: on) {
+  @if $value == on {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}

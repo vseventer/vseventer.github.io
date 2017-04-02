@@ -1,0 +1,36 @@
+// Overrides.
+// ----------
+
+// Use flexbox grid without legacy support.
+$legacy-support: false;
+
+// Adjust spacing.
+$reflex-grid-spacing: $default-spacing;
+$reflex-cell-spacing: $default-spacing;
+
+
+// Imports.
+// --------
+
+@import "./node_modules/reflex-grid/scss/reflex";
+
+
+// Extensions.
+// -----------
+
+// Modifiers.
+.grid__col-sm--bleed {
+  padding: 0;
+
+  @media (min-width: $reflex-md) {
+    padding: $default-spacing;
+  }
+}
+
+// Ordering.
+.grid--first {
+  order: -1;
+}
+.grid--last {
+  order: 1
+}

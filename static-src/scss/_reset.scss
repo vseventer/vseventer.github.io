@@ -1,0 +1,53 @@
+// Imports.
+// --------
+
+@import "./node_modules/normalize.css/normalize";
+@import "mixins/font-smoothing";
+
+
+// Extensions.
+// -----------
+
+// Reset.
+body {
+  @include font-smoothing(on);
+}
+
+// Block elements.
+body, div {
+  margin: 0;
+}
+p, h1, h2, h3, h4, h5, h6, ol, ul, pre, address, blockquote, dl, fieldset, form, hr, noscript, table {
+  margin: 0 0 $default-spacing;
+}
+
+// Inline elements.
+// @see https://www.gridlover.net/
+a, b, i, strong, em, small, code {
+  line-height: 0;
+}
+img {
+  vertical-align: middle;
+}
+
+// Lists.
+ol, ul {
+  padding-left: $default-spacing;
+}
+ol ol, ul ul, ol ul, ul ol {
+  margin-bottom: 0;
+}
+dd {
+  margin-left: $default-spacing;
+}
+
+// Misc.
+blockquote {
+  border-left: $border-width-lg solid;
+  margin-left: -$border-width;
+  padding-left: ($default-spacing - $border-width);
+}
+hr {
+  border: $border-width solid;
+  margin: -$border-width 0 ($default-spacing - $border-width);
+}

@@ -1,0 +1,41 @@
+{
+  "name"        : "vseventer.github.io",
+  "version"     : "0.1.0-dev",
+  "description" : "My personal website.",
+  "keywords"    : [ "blog", "hugo", "static-site" ],
+  "homepage"    : "https://www.vseventer.com",
+  "bugs"        : "https://github.com/vseventer/vseventer.github.io/issues",
+  "license"     : "MIT",
+  "author"      : "Mark van Seventer <mark@vseventer.com> (https://www.vseventer.com)",
+  "repository"  : { "type": "git", "url": "vseventer/vseventer.github.io" },
+  "config"      : { "baseurl": "https://www.vseventer.com/" },
+  "scripts"     : {
+    "hugo"           : "hugo --cleanDestinationDir --i18n-warnings",
+    "hugo:watch"     : "npm run hugo -- --buildDrafts --buildExpired --buildFuture --watch",
+    "webpack"        : "hugo-webpack -p --output-public-path $npm_package_config_baseurl",
+    "webpack-server" : "hugo-webpack-server -d --open",
+
+    "clean": "rm -rf .tmp/ public/",
+
+    "build"     : "npm run hugo -- --baseURL $npm_package_config_baseurl && npm run webpack",
+    "postbuild" : "rm public/js/bundle.js",
+
+    "watch" : "concurrently --kill-others 'npm run hugo:watch' 'npm run webpack-server'",
+    "start" : "npm run watch",
+
+    "predeploy" : "npm run build",
+    "deploy"    : "gh-pages -b master -d public/ -m 'Release.'"
+  },
+  "dependencies": {
+    "concurrently"  : "3.4.x",
+    "gh-pages"      : "0.12.x",
+    "hugo-webpack-boilerplate": "0.2.x",
+    "normalize.css" : "6.0.x",
+    "reflex-grid"   : "1.5.x"
+  },
+  "engines": {
+    "hugo": ">=0.19",
+    "node": ">=6.x"
+  },
+  "private": true
+}

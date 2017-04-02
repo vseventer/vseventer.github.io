@@ -1,0 +1,11 @@
+- id: pagination.previous
+  translation: "Previous Page"
+- id: pagination.next
+  translation: "Next Page"
+
+- id: social.github
+  translation: "GitHub"
+- id: social.linkedin
+  translation: "LinkedIn"
+- id: social.twitter
+  translation: "Twitter"

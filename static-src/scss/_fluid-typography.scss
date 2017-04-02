@@ -1,0 +1,22 @@
+// @see https://madebymike.com.au/writing/precise-control-responsive-typography/
+// @see https://codepen.io/MadeByMike/pen/YPJJYv
+
+// Constants.
+// ----------
+
+$delta    : ($max-font-size - $font-size) / 1px; // unit-less.
+$spectrum : ($reflex-lg-max - $reflex-md) / 1px; // unit-less.
+
+
+// Typography.
+// -----------
+
+// Base style.
+:root {
+  @media (min-width: $reflex-md) and (max-width: $reflex-lg-max) {
+    font-size: calc(#{$font-size} + #{$delta} * ( (100vw - #{$reflex-md}) / #{$spectrum} ));
+  }
+  @media (min-width: $reflex-lg-max) {
+    font-size: $max-font-size;
+  }
+}

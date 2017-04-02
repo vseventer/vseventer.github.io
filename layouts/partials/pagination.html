@@ -1,0 +1,14 @@
+<nav aria-label="pagination">
+  <ul>
+    {{ if .Paginator.HasPrev }}
+    <li>
+      <a href="{{ .Paginator.Prev.URL |  }}" rel="prev">{{ i18n "pagination.previous" }}</a>
+    </li>
+    {{ end }}
+    {{ if .Paginator.HasNext }}
+    <li>
+      <a href="{{ .Paginator.Next.URL |  }}" rel="next">{{ i18n "pagination.next" }}</a>
+    </li>
+    {{ end }}
+  </ul>
+</nav>

@@ -1,0 +1,39 @@
+// @see http://www.entypo.com/
+// @see https://icomoon.io/app/
+
+// @see https://css-tricks.com/snippets/css/using-font-face/
+@font-face {
+  font-family: 'icomoon';
+  src:  url('/fonts/icomoon.eot'); // IE9 Compat Modes.
+  src:  url('/fonts/icomoon.eot?#iefix') format('embedded-opentype'), // IE6–IE8.
+    url('/fonts/icomoon.woff') format('woff'),// Pretty Modern Browsers.
+    url('/fonts/icomoon.ttf') format('truetype'), // Safari, Android, iOS.
+    url('/fonts/icomoon.svg#icomoon') format('svg'); // Legacy iOS.
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  @include modular-scale($ms-ratio, 3);
+}
+
+.icon-github-with-circle:before {
+  content: "\e900";
+}
+.icon-github:before {
+  content: "\e901";
+}
+.icon-linkedin-with-circle:before {
+  content: "\e902";
+}
+.icon-linkedin:before {
+  content: "\e903";
+}
+.icon-twitter-with-circle:before {
+  content: "\e904";
+}
+.icon-twitter:before {
+  content: "\e905";
+}
