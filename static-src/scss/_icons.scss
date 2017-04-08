@@ -16,7 +16,7 @@
 .icon {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'icomoon' !important;
-  @include modular-scale($ms-ratio, 3);
+  @include modular-scale(2);
 }
 
 .icon-github-with-circle:before {

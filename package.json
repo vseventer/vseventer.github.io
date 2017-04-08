@@ -1,6 +1,6 @@
 {
   "name"        : "vseventer.github.io",
-  "version"     : "0.1.0",
+  "version"     : "0.2.0-dev",
   "description" : "My personal website.",
   "keywords"    : [ "blog", "hugo", "static-site" ],
   "homepage"    : "https://www.vseventer.com",
@@ -27,11 +27,10 @@
     "deploy"    : "gh-pages -b master -d public/ -m 'Release.'"
   },
   "dependencies": {
-    "concurrently"  : "3.4.x",
-    "gh-pages"      : "0.12.x",
+    "concurrently" : "3.4.x",
+    "gh-pages"     : "0.12.x",
     "hugo-webpack-boilerplate": "0.2.x",
-    "normalize.css" : "6.0.x",
-    "reflex-grid"   : "1.5.x"
+    "personal-branding": "vseventer/personal-branding"
   },
   "engines": {
     "hugo": ">=0.19",

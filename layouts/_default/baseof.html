@@ -22,23 +22,12 @@
       {{/* partial "nav" . */}}
     {{ end }}
 
-    <div class="grid grid--align-center">
+    <div class="container">
+      {{ template "content" . }}
       {{ if .IsHome }}
-        <div class="grid__col-md-8">
-          {{ template "content" . }}
-        </div>
-        <div class="grid--first grid__col-md-4 grid__col-sm--bleed">
-          {{ partial "banner" . }}
-        </div>
-      {{ else }}
-        <div class="grid__col-xs-12">
-          {{ template "content" . }}
-        </div>
+        {{ partial "banner" . }}
       {{ end }}
-
-      <div class="grid__col-xs-12 grid__cell-footer grid__col--bleed-y">
-        {{ partial "social" . }}
-      </div>
+      {{ partial "social" . }}
     </div>
 
     {{ block "scripts" . }}{{ end }}

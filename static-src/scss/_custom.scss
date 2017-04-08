@@ -1,59 +1,46 @@
 // Custom.
 // -------
 
-// Elements.
-a {
-  color: #1e90ff; // Dodgerblue.
-  text-decoration: underline;
-
-  &:hover { text-decoration: none; }
+.container {
+  @include grid($align-items: center, $justify-content: center);
 }
 
-// Styles.
-.article {
-  margin: 0 auto;
-  max-width: 33rem;
-
-  @media screen and (min-width: 37em) {
-    blockquote {
-      margin-left: -$default-spacing;
-    }
-    ol, ul {
-      padding-left: 0;
-    }
-    ol ol, ul ul, ol ul, ul ol {
-      padding-left: $default-spacing;
-    }
+.article-wrapper {
+  @include grid-col(12);
+  @include respond-to('medium') {
+    @include grid-col(8);
   }
+}
 
-  // Elements.
-  :last-child {
+.list-inline__item {
+  @include grid-col($flex-grow: 0);
+}
+
+.menu {
+  @include grid-col(12, $grid-gutter-y: 0);
+
+  border-top: $border-width-lg solid;
+  margin-top: -$border-width-lg;
+
+  &__inner {
+    justify-content: center;
     margin-bottom: 0;
   }
 }
 
-.link {
-  // Modifiers.
-  &--unstyled {
-    color: #000000;
-    text-decoration: none;
+.portrait {
+  @include grid-col(12, $grid-gutter: 0, $order: -1);
+  @include respond-to('medium') {
+    @include grid-col(4, $order: -1);
   }
-}
-
-.menu {
-  border-top: $border-width-lg solid;
-  margin-top: -$border-width;
+  text-align: center;
 
   // Elements.
-  &__menu {
-    margin-top: -$border-width;
-  }
-}
-
-.portrait {
-  @media screen and (min-width: $reflex-md) {
-    border: $border-width solid;
-    border-radius: 50%;
-    padding: $border-width;
+  &__picture {
+    @include respond-to('medium') {
+      border: $border-width solid;
+      border-radius: 50%;
+      padding: $border-width;
+    }
   }
 }
