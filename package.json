@@ -27,8 +27,8 @@
     "deploy"    : "gh-pages -b master -d public/ -m 'Release.'"
   },
   "dependencies": {
-    "concurrently" : "3.4.x",
-    "gh-pages"     : "0.12.x",
+    "concurrently" : "3.5.x",
+    "gh-pages"     : "1.0.x",
     "hugo-webpack-boilerplate": "0.2.x",
     "personal-branding": "vseventer/personal-branding"
   },
