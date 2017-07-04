@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2.0-dev
+## 0.2.0 (July 4, 2017)
 * Added personal branding.
 * Update content.
 * Updated `concurrently` and `gh-pages` dependencies.
