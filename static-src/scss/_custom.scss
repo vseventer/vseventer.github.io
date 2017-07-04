@@ -6,14 +6,10 @@
 }
 
 .article-wrapper {
-  @include grid-col(12);
+  @include grid-col(12, $grid-gutter-y: 0);
   @include respond-to('medium') {
-    @include grid-col(8);
+    @include grid-col(8, $grid-gutter-y: 0);
   }
-}
-
-.list-inline__item {
-  @include grid-col($flex-grow: 0);
 }
 
 .menu {
@@ -29,9 +25,10 @@
 }
 
 .portrait {
-  @include grid-col(12, $grid-gutter: 0, $order: -1);
+  @include grid-col(12, $grid-gutter-x: 0, $order: -1);
   @include respond-to('medium') {
     @include grid-col(4, $order: -1);
+    margin-top: $spacer-sm;
   }
   text-align: center;
 
