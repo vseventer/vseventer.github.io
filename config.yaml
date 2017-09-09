@@ -29,16 +29,10 @@ defaultContentLanguageInSubdir: false
 # The below example will disable all page types and will render nothing.
 disableKinds: [ "taxonomy", "taxonomyTerm", "RSS", "sitemap" ]
 disableLiveReload:          false
-# Do not build RSS files
-disableRSS:                 true
-# Do not build Sitemap file
-disableSitemap:             true
 # Enable GitInfo feature
 enableGitInfo:              false
 # Build robots.txt file
 enableRobotsTXT:            true
-# Do not render 404 page
-disable404:                 false
 # Do not inject generator meta tag on homepage
 disableHugoGeneratorInject: false
 
