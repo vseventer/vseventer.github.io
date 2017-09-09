@@ -22,7 +22,7 @@
     "start" : "npm run watch",
 
     "predeploy" : "npm run build",
-    "deploy"    : "gh-pages -b master -d public/ -m 'Release.'"
+    "deploy"    : "gh-pages -b master -d dist/ -m 'Release.'"
   },
   "dependencies": {
     "concurrently" : "3.5.x",
