@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.4.0 (September 28, 2017)
+* Updated content.
+
 ## 0.3.2 (September 23, 2017)
 * Updated `hugo-webpack-boilerplate` dependency.
 

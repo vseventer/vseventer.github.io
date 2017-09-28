@@ -3,11 +3,11 @@ title: Mark van Seventer
 menu: main
 weight: 10
 ---
-Hi, I’m Mark. I am a full stack software engineer. After obtaining a degree in Computer Science, I worked with start-ups, as well as large enterprises, both on-site and remotely from three different continents.
+Hi, I’m Mark. I am a Full Stack Software Engineer with 10 Years of Experience.
 <!--more-->
 
-I love writing software and am always on the lookout for new tools, technologies, and opportunities. My goal is to never stop learning, and contributing to open-source projects is one of the ways in which I achieve this. For example, see my travel blog, [MarkMyJourney.com](https://www.markmyjourney.com/).
+In my 10 Years of Experience, I helped develop Fashionchick.nl (acquired by Sanoma Media in 2013), before moving to the United States to work for start-up Kinvey (acquired by Progress in 2017). I continued doing so remotely from Australia, before joining Tesco, UK’s biggest supermarket chain, to launch the (mobile) website of Tesco Grocery. In my spare time, I maintain a number of projects, like my travel blog, [MarkMyJourney.com](https://www.markmyjourney.com/).
 
-Now, I'm looking for an exciting position with a startup in Boston or New York, starting September or October 2017. I need a work visa - I am eligible for cap-exempt H-1B visa.
+I'm looking for an exciting new opportunity, starting immediately. I love experimenting with the latest web technologies, improving accessibility and performance of applications, and working with passionate people.
 
-Take a look at my {{< nofollow "resume" "/resources/markvanseventer-resume.pdf" >}}, or drop me an e-mail at [mark@vseventer.com](mailto:mark@vseventer.com).
+Take a look at my {{< nofollow "resume" "/resources/markvanseventer-resume.pdf" >}} or {{< nofollow "CV" "/resources/markvanseventer-cv.pdf" >}} (in Dutch), or drop me an e-mail at [mark@vseventer.com](mailto:mark@vseventer.com).
