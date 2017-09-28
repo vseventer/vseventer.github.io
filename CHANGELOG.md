@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.4.1 (September 28, 2017)
+* Updated CV.
+
 ## 0.4.0 (September 28, 2017)
 * Updated content.
 
