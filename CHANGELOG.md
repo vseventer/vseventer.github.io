@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.4.2 (October 1, 2017)
+* Updated resume and CV.
+
 ## 0.4.1 (September 28, 2017)
 * Updated content.
 * Updated CV.
