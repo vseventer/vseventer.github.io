@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.7.2",
-    "personal-branding": "/Users/vseventer/Projects/personal-branding/"
+    "personal-branding": "vseventer/personal-branding#0.1.0"
   },
   "engines": {
     "hugo": ">=0.54"
