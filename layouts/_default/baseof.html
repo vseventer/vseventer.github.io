@@ -1,35 +1,62 @@
+{{/* Store environment variables. */}}
+{{ $isProduction  := eq .Hugo.Environment "production" }}
+{{ $isDevelopment := eq .Hugo.Environment "development" }}
 <!doctype html>
 <html lang="{{ .Language }}">
   <head>
-    <title>{{ .Title }}</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link href="{{ .Permalink }}" rel="canonical" />
-    <meta name="description" content="{{ .Summary }}" />
-    {{ if (or .IsHome .IsPage) }}
-      <meta name="robots" content="index, follow" />
-    {{ else }}
-      <meta name="robots" content="noindex, follow" />
+    <title>{{ .Site.Title }}: {{ .Title }}</title>
+
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {{/* In development, relax CSP. */}}
+    {{ $csp := "default-src 'none'; connect-src links.services.disqus.com; font-src 'self'; frame-src disqus.com c.disquscdn.com; img-src 'self' c.disquscdn.com referrer.disqus.com; script-src 'self' c.disquscdn.com disqus.com test.disqus.com 'sha256-b96J/jlz8FIjodPOm/LrwOC2TJBNGg2EOiWpAJX+4v8='; style-src 'self' c.disquscdn.com; upgrade-insecure-requests" }}
+    {{ if $isDevelopment }}
+      {{ $csp = "default-src 'none'; connect-src 'self'; font-src 'self'; img-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; upgrade-insecure-requests" }}
     {{ end }}
 
+    <meta http-equiv="Content-Security-Policy" content="{{ $csp }}" />
+
+    {{/* SASS to CSS. Enable source maps in development, minify in production. */}}
+    {{ $outputStyle := cond $isProduction "compressed" "nested" }}
+    {{ $options := dict "enableSourceMap" $isDevelopment "includePaths" (slice "node_modules/") "outputStyle" $outputStyle "targetPath" "css/style.css" }}
+    {{ $css := resources.Get "sass/style.scss" | toCSS $options | fingerprint }}
+
+    <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}" />
+
     {{ block "styles" . }}
-      <link rel="stylesheet" href="${require('~scss/style.scss')}" />
+      {{/* Any additional styles can be inserted here. */}}
+    {{ end }}
+
+    <meta name="description" content="{{ .Summary }}" />
+
+    {{ if .Permalink }}
+      {{/* The 404 Page Not Found page does not have a permalink. */}}
+      <link rel="canonical" href="{{ .Permalink }}" />
+    {{ end }}
+
+    {{ block "head" . }}
+      {{/* Any custom heading code can be inserted here. */}}
     {{ end }}
   </head>
   <body>
-    {{ block "nav" . }}
-      {{/* partial "nav" . */}}
+    {{ block "header" . }}
+      {{/* Any leading HTML can be inserted here. */}}
+
+      {{ partial "menu.html" . }}
     {{ end }}
 
-    <div class="container">
-      {{ template "content" . }}
-      {{ if .IsHome }}
-        {{ partial "banner" . }}
-      {{ end }}
-      {{ partial "social" . }}
-    </div>
+    {{ template "content" . }}
 
-    {{ block "scripts" . }}{{ end }}
+    {{ block "footer" . }}
+      {{/* Any trailing HTML can be inserted here. */}}
+    {{ end }}
+
+    {{ block "scripts" . }}
+      {{/* Any additional scripts can be inserted here. */}}
+    {{ end }}
   </body>
 </html>

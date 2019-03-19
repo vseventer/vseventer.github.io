@@ -1,0 +1,19 @@
+# https://gohugo.io/content-management/menus/#add-non-content-entries-to-a-menu
+#[[main]]
+#  name = "Blogs"
+#  url = "/blog"
+
+[[main]]
+  name = "GitHub"
+  pre = "<i class=\"fab fa-lg fa-github\"></i>"
+  url = "https://github.com/vseventer"
+
+[[main]]
+  name = "LinkedIn"
+  pre = "<i class=\"fab fa-lg fa-linkedin\"></i>"
+  url = "https://www.linkedin.com/in/markvanseventer/"
+
+[[main]]
+  name = "Twitter"
+  pre = "<i class=\"fab fa-lg fa-twitter\"></i>"
+  url = "https://twitter.com/vseventer"

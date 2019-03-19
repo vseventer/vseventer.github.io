@@ -1,0 +1,19 @@
+{{ define "content" }}
+
+  {{ partial "section.html" . }}
+
+  <div class="s-container s-container--padded c-terms u-spacer">
+    <ul class="c-terms__list c-terms__list--center">
+      {{ range $key, $value := .Data.Terms.Alphabetical }}
+        {{ $count := .Count }}
+        {{/* https://gohugo.io/templates/taxonomy-templates/#render-a-site-s-taxonomies */}}
+        {{ with $.Site.GetPage (printf "/%s/%s" $.Type .Name )}}
+          <li>
+            <a class="o-label o-label--primary" href="{{ .Permalink }}">{{ .Name }} ({{ $count }})</a>
+          </li>
+        {{ end }}
+      {{ end }}
+    </ul>
+  </div>
+
+{{ end }}

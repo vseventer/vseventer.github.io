@@ -3,4 +3,3 @@ Disallow: /css/
 Disallow: /fonts/
 Disallow: /img/
 Disallow: /js/
-Disallow: /resources/

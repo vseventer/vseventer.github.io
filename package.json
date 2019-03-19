@@ -8,31 +8,24 @@
   "license"     : "MIT",
   "author"      : "Mark van Seventer <mark@vseventer.com> (https://www.vseventer.com)",
   "repository"  : { "type": "git", "url": "vseventer/vseventer.github.io" },
-  "config"      : { "baseurl": "https://www.vseventer.com/" },
-  "scripts"     : {
-    "hugo"           : "hugo --cleanDestinationDir --i18n-warnings",
-    "hugo:watch"     : "npm run hugo -- --buildDrafts --buildExpired --buildFuture --watch",
-    "webpack"        : "webpack -p --output-public-path $npm_package_config_baseurl",
-    "webpack-server" : "webpack-dev-server -d --open",
+  "scripts": {
+    "postinstall": "hugo gen chromastyles --style friendly > assets/sass/lib/_chroma.css",
 
-    "prebuild" : "rm -rf dist/",
-    "build"    : "npm run hugo -- --baseURL $npm_package_config_baseurl && npm run webpack",
+    "clean": "rm -rf public/* resources/",
 
-    "watch" : "concurrently --kill-others 'npm run hugo:watch' 'npm run webpack-server'",
-    "start" : "npm run watch",
+    "prebuild": "yarn clean",
+    "build": "hugo --minify",
 
-    "predeploy" : "npm run build",
-    "deploy"    : "gh-pages -b master -d dist/ -m 'Release.'"
+    "start": " hugo server",
+
+    "preversion": "yarn build"
   },
   "dependencies": {
-    "concurrently" : "3.5.x",
-    "gh-pages"     : "1.0.x",
-    "hugo-webpack-boilerplate": "1.1.x",
-    "personal-branding": "vseventer/personal-branding"
+    "@fortawesome/fontawesome-free": "^5.7.2",
+    "personal-branding": "/Users/vseventer/Projects/personal-branding/"
   },
   "engines": {
-    "hugo": ">=0.19",
-    "node": ">=6.x"
+    "hugo": ">=0.54"
   },
   "private": true
 }

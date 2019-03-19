@@ -1,14 +1,23 @@
-<nav aria-label="pagination">
-  <ul>
-    {{ if .Paginator.HasPrev }}
-    <li>
-      <a href="{{ .Paginator.Prev.URL |  }}" rel="prev">{{ i18n "pagination.previous" }}</a>
-    </li>
-    {{ end }}
-    {{ if .Paginator.HasNext }}
-    <li>
-      <a href="{{ .Paginator.Next.URL |  }}" rel="next">{{ i18n "pagination.next" }}</a>
-    </li>
-    {{ end }}
-  </ul>
-</nav>
+{{ if gt .Paginator.TotalPages 1 }}
+  <nav class="c-pagination" role="pagination">
+    <ul class="c-pagination__list">
+      {{ if .Paginator.HasPrev }}
+        <li class="c-pagination__prev">
+          <a class="c-pagination__link" href="{{ .Paginator.Prev.URL }}">
+            {{ T "pagination__prev" .Paginator }}
+          </a>
+        </li>
+      {{ end }}
+
+      <li class="c-pagination__current">{{ T "pagination__current" .Paginator }}</li>
+
+      {{ if .Paginator.HasNext }}
+        <li class="c-pagination__next">
+          <a class="c-pagination__link" href="{{ .Paginator.Next.URL }}">
+            {{ T "pagination__next" .Paginator }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </nav>
+{{ end }}

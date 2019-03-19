@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.0
+* Full rewrite.
+
 ## 0.4.2 (October 1, 2017)
 * Updated resume and CV.
 

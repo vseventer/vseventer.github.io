@@ -1,3 +1,79 @@
 {{ define "content" }}
-  {{ partial "page" . }}
+  <article class="c-post">
+    <header class="s-container s-container--breakout s-container--padded c-post__header c-post__header--large o-delta">
+      <h1 class="c-post__title">{{ .Title }}</h1>
+      <p class="c-post__subtitle">
+        <time datetime="{{ dateFormat "2006-01-02" .Date }}">{{ dateFormat "2 January 2006" .Date }}</time>
+      </p>
+    </header>
+    <div class="s-container s-container--padded">
+      <section class="c-post__content s-content">
+        {{ .Content }}
+      </section>
+      {{ if isset .Params "tags" }}
+        <section class="c-post__tags c-terms u-spacer--xlarge">
+          <ul class="c-terms__list c-terms__list--center">
+            {{ range sort .Params.tags }}
+              {{/* https://gohugo.io/templates/taxonomy-templates/#render-a-site-s-taxonomies */}}
+              {{ with $.Site.GetPage (printf "/tags/%s" .) }}
+                <li>
+                  <a class="o-label o-label--primary" href="{{ .Permalink }}">{{ .Name }}</a>
+                </li>
+              {{ end }}
+            {{ end }}
+          </ul>
+        </section>
+      {{ end }}
+      <section class="c-post__share c-share u-spacer--xlarge">
+        <ul class="c-share__list c-share__list--center">
+          <li>
+            {{ $hashtags := delimit (default "" .Params.tags) "," }}
+            <a class="o-label o-label--contrast o-label--large share-twitter" href="https://twitter.com/intent/tweet?{{ querify "url" .Permalink "text" .Title "hashtags" $hashtags | safeURL }}">
+              <i class="fab fa-twitter"></i>
+              <span>{{ T "social__twitter" }}</span>
+            </a>
+          </li>
+          <li>
+            <a class="o-label o-label--contrast o-label--large share-facebook" href="https://facebook.com/sharer/sharer.php?{{ querify "u" .Permalink | safeURL }}">
+              <i class="fab fa-facebook"></i>
+              <span>{{ T "social__facebook" }}</span>
+            </a>
+          </li>
+          <li>
+            <a class="o-label o-label--contrast o-label--large share-linkedin" href="https://www.linkedin.com/shareArticle?{{ querify "mini" true "url" .Permalink "title" .Title "source" .Site.Title | safeURL }}">
+              <i class="fab fa-linkedin"></i>
+              <span>{{ T "social__linkedin" }}</span>
+            </a>
+          </li>
+          <li>
+            <a class="o-label o-label--contrast o-label--large share-email" href="mailto:?{{ querify "subject" .Title "body" .Permalink | safeURL }}">
+              <i class="far fa-envelope"></i>
+              <span>{{ T "social__email" }}</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      {{ if (or .NextInSection .PrevInSection) }}
+        <section class="c-post__related c-related o-zeta u-spacer u-border-bottom">
+          {{ with .NextInSection }}
+            <div class="c-related__next">
+              <p class="c-related__label">{{ T "related__next" . }}</p>
+              {{ partial "summary.html" . }}
+            </div>
+          {{ end }}
+          {{ with .PrevInSection }}
+            <div class="c-related__prev">
+              <p class="c-related__label">{{ T "related__prev" . }}</p>
+              {{ partial "summary.html" . }}
+            </div>
+          {{ end }}
+        </section>
+      {{ end }}
+
+      <section class="c-post__comments">
+        {{ template "_internal/disqus.html" . }}
+      </section>
+    </div>
+  </article>
 {{ end }}

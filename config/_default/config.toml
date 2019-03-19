@@ -1,0 +1,16 @@
+# https://gohugo.io/getting-started/configuration/
+disableKinds = [ "sitemap" ]
+paginate = 2
+preserveTaxonomyNames = true
+rssLimit = 10
+title = "Mark van Seventer"
+verbose = true
+
+# https://gohugo.io/content-management/comments/
+disqusShortname = "vseventer"
+
+# https://gohugo.io/content-management/syntax-highlighting/
+pygmentsCodefences = false
+pygmentsCodefencesGuessSyntax = true
+pygmentsUseClasses = true
+pygmentsOptions = "linenos=inline"
