@@ -5,11 +5,11 @@
 See the [Changelog](./CHANGELOG.md) for a list of changes.
 
 ## Installation
-1. Run `yarn install` to download and install dependencies.
+1. Run `npm install` to download and install dependencies.
 
 ## Deployment
 1. Ensure the `public/` directory is a git worktree using `git worktree add -B master public/ origin/master`.
-2. Run `yarn version <major|minor|patch>`.
+2. Run `npm version <major|minor|patch>`.
 3. Push the code changes using `git push`.
 4. Commit the build changes using `cd public/ && git commit -am 'Publishing changes.'`.
 5. Push the build changes using `cd public/ && git push`.

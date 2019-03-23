@@ -13,12 +13,12 @@
 
     "clean": "rm -rf public/* resources/",
 
-    "prebuild": "yarn clean",
+    "prebuild": "npm run clean",
     "build": "hugo --minify",
 
     "start": " hugo server",
 
-    "preversion": "yarn build"
+    "preversion": "npm run build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.7.2",
