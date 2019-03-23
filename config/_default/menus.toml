@@ -2,18 +2,22 @@
 #[[main]]
 #  name = "Blogs"
 #  url = "/blog"
+#  weight = 2
 
 [[main]]
   name = "GitHub"
   pre = "<i class=\"fab fa-lg fa-github\"></i>"
   url = "https://github.com/vseventer"
+  weight = 3
 
 [[main]]
   name = "LinkedIn"
   pre = "<i class=\"fab fa-lg fa-linkedin\"></i>"
   url = "https://www.linkedin.com/in/markvanseventer/"
+  weight = 4
 
 [[main]]
   name = "Twitter"
   pre = "<i class=\"fab fa-lg fa-twitter\"></i>"
   url = "https://twitter.com/vseventer"
+  weight = 5
