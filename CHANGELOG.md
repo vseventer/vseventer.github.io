@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.1 (April 14, 2019)
+* CSP: Whitelist Disqus embed script.
+
 ## 1.0.0 (April 14, 2019)
 * Redesign.
 * Add introductionary blog post.

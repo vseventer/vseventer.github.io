@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     {{/* In development, relax CSP. */}}
-    {{ $csp := "default-src 'none'; connect-src links.services.disqus.com; font-src 'self'; frame-src disqus.com c.disquscdn.com; img-src 'self' c.disquscdn.com referrer.disqus.com; script-src 'self' c.disquscdn.com disqus.com test.disqus.com 'sha256-b96J/jlz8FIjodPOm/LrwOC2TJBNGg2EOiWpAJX+4v8='; style-src 'self' c.disquscdn.com; upgrade-insecure-requests" }}
+    {{ $csp := "default-src 'none'; connect-src links.services.disqus.com; font-src 'self'; frame-src disqus.com c.disquscdn.com; img-src 'self' c.disquscdn.com referrer.disqus.com; script-src c.disquscdn.com disqus.com vseventer.disqus.com 'sha256-Uq3KiU75YA7NCutVwo/ONLi4PLY1TDTncwlGZ/GTzEI='; style-src 'self' c.disquscdn.com; upgrade-insecure-requests" }}
     {{ if $isDevelopment }}
       {{ $csp = "default-src 'none'; connect-src 'self'; font-src 'self'; img-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; upgrade-insecure-requests" }}
     {{ end }}
