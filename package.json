@@ -1,23 +1,26 @@
 {
-  "name"        : "vseventer.github.io",
-  "version"     : "0.4.2",
-  "description" : "My personal website.",
-  "keywords"    : [ "blog", "hugo", "static-site" ],
-  "homepage"    : "https://www.vseventer.com",
-  "bugs"        : "https://github.com/vseventer/vseventer.github.io/issues",
-  "license"     : "MIT",
-  "author"      : "Mark van Seventer <mark@vseventer.com> (https://www.vseventer.com)",
-  "repository"  : { "type": "git", "url": "vseventer/vseventer.github.io" },
+  "name": "vseventer.github.io",
+  "version": "1.0.0",
+  "description": "My personal website.",
+  "keywords": [
+    "blog",
+    "hugo",
+    "static-site"
+  ],
+  "homepage": "https://www.vseventer.com",
+  "bugs": "https://github.com/vseventer/vseventer.github.io/issues",
+  "license": "MIT",
+  "author": "Mark van Seventer <mark@vseventer.com> (https://www.vseventer.com)",
+  "repository": {
+    "type": "git",
+    "url": "vseventer/vseventer.github.io"
+  },
   "scripts": {
     "postinstall": "hugo gen chromastyles --style friendly > assets/sass/lib/_chroma.css",
-
     "clean": "rm -rf public/* resources/",
-
     "prebuild": "npm run clean",
     "build": "hugo --minify",
-
     "start": " hugo server",
-
     "preversion": "npm run build"
   },
   "dependencies": {
