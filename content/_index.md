@@ -8,6 +8,6 @@ title = "Mark van Seventer"
 +++
 I'm Mark. I write JavaScript.
 
-Things I like: travel, soccer, money hoarding, and giving unwanted financial advice*.
+Things I like: travel, soccer, money hoarding, and handing out unsolicited financial advice*.
 
 Dutchman, NYC-based.
