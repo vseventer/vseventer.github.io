@@ -1,7 +1,8 @@
 # Changelog
 
-## 1.0.0
-* Full rewrite.
+## 1.0.0 (April 14, 2019)
+* Redesign.
+* Add introductionary blog post.
 
 ## 0.4.2 (October 1, 2017)
 * Updated resume and CV.
