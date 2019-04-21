@@ -8,7 +8,7 @@
 
   padding: vr(0.5); /* 1 */
 
-  /* stylelint-disable-next-line selector-max-class */
+  /* stylelint-disable selector-max-class */
   .hl { /* 2 */
     margin-top: 0; /* 3 */
     margin-right: vr(-0.5); /* stylelint-disable property-blacklist */
@@ -16,6 +16,14 @@
     padding-right: vr(0.5);
     padding-left: vr(0.5);
   }
+
+  /**
+   * 1. Exclude line numbers from text selection.
+   */
+  .ln {
+    user-select: none; /* 1 */
+  }
+  /* stylelint-enable selector-max-class */
 }
 
 .footnotes {
