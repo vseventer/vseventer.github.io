@@ -29,25 +29,25 @@
           <li>
             {{ $hashtags := delimit (default "" .Params.tags) "," }}
             <a class="o-label o-label--contrast o-label--large share-twitter" href="https://twitter.com/intent/tweet?{{ querify "url" .Permalink "text" .Title "hashtags" $hashtags | safeURL }}">
-              <i class="fab fa-twitter"></i>
+              <i class="fab fa-twitter"></i>&nbsp;
               <span>{{ T "social__twitter" }}</span>
             </a>
           </li>
           <li>
             <a class="o-label o-label--contrast o-label--large share-facebook" href="https://facebook.com/sharer/sharer.php?{{ querify "u" .Permalink | safeURL }}">
-              <i class="fab fa-facebook"></i>
+              <i class="fab fa-facebook"></i>&nbsp;
               <span>{{ T "social__facebook" }}</span>
             </a>
           </li>
           <li>
             <a class="o-label o-label--contrast o-label--large share-linkedin" href="https://www.linkedin.com/shareArticle?{{ querify "mini" true "url" .Permalink "title" .Title "source" .Site.Title | safeURL }}">
-              <i class="fab fa-linkedin"></i>
+              <i class="fab fa-linkedin"></i>&nbsp;
               <span>{{ T "social__linkedin" }}</span>
             </a>
           </li>
           <li>
             <a class="o-label o-label--contrast o-label--large share-email" href="mailto:?{{ querify "subject" .Title "body" .Permalink | safeURL }}">
-              <i class="far fa-envelope"></i>
+              <i class="far fa-envelope"></i>&nbsp;
               <span>{{ T "social__email" }}</span>
             </a>
           </li>
