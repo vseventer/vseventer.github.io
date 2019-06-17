@@ -1,6 +1,6 @@
 # https://gohugo.io/getting-started/configuration/
 disableKinds = [ "sitemap" ]
-paginate = 2
+paginate = 5
 preserveTaxonomyNames = true
 rssLimit = 10
 title = "Mark van Seventer"
