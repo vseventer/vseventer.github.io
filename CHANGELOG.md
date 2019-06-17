@@ -1,6 +1,7 @@
 # Changelog
 
 ## 1.0.2 (June 16, 2019)
+* Add blog post.
 * CSP: Whitelist Twitter embed scripts.
 * Increase pagination to 5 items per page.
 
