@@ -13,9 +13,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     {{/* In development, relax CSP. */}}
-    {{ $csp := "default-src 'none'; connect-src links.services.disqus.com; font-src 'self'; frame-src disqus.com c.disquscdn.com; img-src 'self' c.disquscdn.com referrer.disqus.com; script-src c.disquscdn.com disqus.com vseventer.disqus.com 'sha256-Uq3KiU75YA7NCutVwo/ONLi4PLY1TDTncwlGZ/GTzEI='; style-src 'self' c.disquscdn.com; upgrade-insecure-requests" }}
+    {{ $csp := "default-src 'none'; connect-src links.services.disqus.com; font-src 'self'; frame-src disqus.com c.disquscdn.com platform.twitter.com syndication.twitter.com; img-src 'self' data: c.disquscdn.com referrer.disqus.com *.twimg.com platform.twitter.com syndication.twitter.com; script-src c.disquscdn.com disqus.com vseventer.disqus.com cdn.syndication.twimg.com platform.twitter.com syndication.twitter.com 'sha256-Uq3KiU75YA7NCutVwo/ONLi4PLY1TDTncwlGZ/GTzEI='; style-src 'self' 'unsafe-inline' c.disquscdn.com platform.twitter.com; upgrade-insecure-requests" }}
     {{ if $isDevelopment }}
-      {{ $csp = "default-src 'none'; connect-src 'self'; font-src 'self'; img-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self'; upgrade-insecure-requests" }}
+      {{ $csp = "default-src 'none'; connect-src 'self'; font-src 'self'; frame-src platform.twitter.com syndication.twitter.com; img-src 'self' data: *.twimg.com platform.twitter.com syndication.twitter.com; script-src 'self' 'unsafe-inline' cdn.syndication.twimg.com platform.twitter.com syndication.twitter.com; style-src 'self' 'unsafe-inline' platform.twitter.com; upgrade-insecure-requests" }}
     {{ end }}
 
     <meta http-equiv="Content-Security-Policy" content="{{ $csp }}" />
