@@ -1,4 +1,4 @@
 // Exports.
 module.exports = {
-  env: process.NODE_ENV || 'development'
+  env: process.env.NODE_ENV || 'development'
 };
