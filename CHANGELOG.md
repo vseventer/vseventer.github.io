@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.0 (December 22, 2019)
+* Refactor to use [eleventy-parcel-boilerplate](https://github.com/vseventer/eleventy-parcel-boilerplate).
+
 ## 1.0.2 (June 16, 2019)
 * Add blog post.
 * CSP: Whitelist Twitter embed scripts.
