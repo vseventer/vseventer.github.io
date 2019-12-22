@@ -1,0 +1,8 @@
+# www.robotstxt.org/
+
+# Disallow crawling of all static content
+User-agent: *
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /img/
+Disallow: /js/
