@@ -9,6 +9,7 @@ import {
   join as joinPath,
   relative as relativePath
 } from 'path';
+import { URL as NodeURL } from 'url';
 
 // Package modules.
 import fetch from 'node-fetch';
@@ -18,7 +19,7 @@ import moment from 'moment';
 import { sprintf } from 'sprintf-js';
 
 // Local modules.
-import { config } from './package.json';
+import { config, homepage } from './package.json';
 import inspect from './lib/filters';
 import NunjucksLinkExtension from './lib/nunjucks/tags/link';
 
@@ -89,6 +90,7 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('date', (date, format) => moment(date).format(format));
   eleventyConfig.addFilter('debug', inspect);
   eleventyConfig.addFilter('format', sprintf);
+  eleventyConfig.addFilter('parseUrl', (input) => (new NodeURL(input, homepage)).href);
 
   // Add custom tags.
   // @see https://www.11ty.io/docs/shortcodes/

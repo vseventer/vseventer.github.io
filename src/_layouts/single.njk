@@ -16,25 +16,25 @@
       <section class="c-post__share c-share u-spacer--xlarge">
         <ul class="c-share__list c-share__list--center">
           <li>
-            <a class="o-label o-label--contrast o-label--large share-twitter" href="https://twitter.com/intent/tweet?url={{- page.url | url | urlencode -}}&text={{- title | urlencode -}}&hashtags={{- page.data.tags | urlencode -}}">
+            <a class="o-label o-label--contrast o-label--large share-twitter" href="https://twitter.com/intent/tweet?url={{- page.url | url | parseUrl | urlencode -}}&text={{- title | urlencode -}}&hashtags={{- page.data.tags | urlencode -}}">
               <i class="fab fa-twitter"></i>&nbsp;
               <span>{{ T.social__twitter }}</span>
             </a>
           </li>
           <li>
-            <a class="o-label o-label--contrast o-label--large share-facebook" href="https://facebook.com/sharer/sharer.php?u={{- page.url | url | urlencode -}}">
+            <a class="o-label o-label--contrast o-label--large share-facebook" href="https://facebook.com/sharer/sharer.php?u={{- page.url | url | parseUrl | urlencode -}}">
               <i class="fab fa-facebook"></i>&nbsp;
               <span>{{ T.social__facebook }}</span>
             </a>
           </li>
           <li>
-            <a class="o-label o-label--contrast o-label--large share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{- page.url | url | urlencode -}}&title={{- title | urlencode -}}&source={{- settings.title | urlencode -}}">
+            <a class="o-label o-label--contrast o-label--large share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{- page.url | url | parseUrl | urlencode -}}&title={{- title | urlencode -}}&source={{- settings.title | urlencode -}}">
               <i class="fab fa-linkedin"></i>&nbsp;
               <span>{{ T.social__linkedin }}</span>
             </a>
           </li>
           <li>
-            <a class="o-label o-label--contrast o-label--large share-email" href="mailto:?subject={{- title | urlencode -}}&body={{- page.url | url | urlencode -}}">
+            <a class="o-label o-label--contrast o-label--large share-email" href="mailto:?subject={{- title | urlencode -}}&body={{- page.url | url | parseUrl | urlencode -}}">
               <i class="far fa-envelope"></i>&nbsp;
               <span>{{ T.social__email }}</span>
             </a>

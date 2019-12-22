@@ -2,6 +2,7 @@
 
 ## 2.0.1 (December 22, 2019)
 * CSP: Use correct whitelist in production.
+* Fix incorrect URL in social sharers.
 
 ## 2.0.0 (December 22, 2019)
 * Refactor to use [eleventy-parcel-boilerplate](https://github.com/vseventer/eleventy-parcel-boilerplate).
