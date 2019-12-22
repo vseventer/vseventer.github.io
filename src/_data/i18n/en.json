@@ -1,0 +1,16 @@
+{
+  "home": "Home",
+
+  "pagination__next": "Next →",
+  "pagination__prev": "← Previous",
+  "pagination__current": "Page %1$d of %2$d",
+
+  "related__next": "Next Post:",
+  "related__prev": "Previous Post:",
+
+  "social__email": "E-mail",
+  "social__facebook": "Post",
+  "social__linkedin": "Update",
+  "social__rss": "RSS",
+  "social__twitter": "Tweet"
+}

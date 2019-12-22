@@ -13,15 +13,15 @@ import stylelint from 'stylelint';
 import { config } from './package.json';
 
 // Constants.
-const INPUT_DIRECTORY = config.input;
-// const INTERMEDIATE_DIRECTORY = config.intermediate;
+// const INPUT_DIRECTORY = config.input;
+const INTERMEDIATE_DIRECTORY = config.intermediate;
 // const OUTPUT_DIRECTORY = config.output;
 const PRODUCTION = process.env.NODE_ENV === 'production';
 
 // @see https://www.11ty.io/docs/languages/
-const ELEVENTY_TEMPLATE_LANGUAGES = [
-  'html', 'md', '11ty.js', 'liquid', 'njk', 'hbs', 'mustache', 'ejs', 'haml', 'pug', 'jstl'
-];
+// const ELEVENTY_TEMPLATE_LANGUAGES = [
+//   'html', 'md', '11ty.js', 'liquid', 'njk', 'hbs', 'mustache', 'ejs', 'haml', 'pug', 'jstl'
+// ];
 
 // Helpers.
 const isTruthy = (x) => !!x;
@@ -32,7 +32,8 @@ module.exports = {
     stylelint(),
     PRODUCTION && purgecss({
       // Purge using templates rather than the full output.
-      content: [joinPath(INPUT_DIRECTORY, `**/*.{${ELEVENTY_TEMPLATE_LANGUAGES}}`)],
+      // content: [joinPath(INPUT_DIRECTORY, `**/*.{${ELEVENTY_TEMPLATE_LANGUAGES}}`)],
+      content: [joinPath(INTERMEDIATE_DIRECTORY, '**/*.html')],
       fontFace: true,
       keyframes: true
     }),

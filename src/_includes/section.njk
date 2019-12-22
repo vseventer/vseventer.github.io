@@ -1,0 +1,11 @@
+<article class="c-post c-post--cover">
+  <header class="s-container s-container--breakout s-container--padded c-post__header c-post__header--large o-delta">
+    <h1 class="c-post__title">{{ title }}</h1>
+
+      {% if content %}
+        <section class="s-content c-post__subtitle">
+          {{ content | safe }}
+        </section>
+      {% endif %}
+  </header>
+</article>

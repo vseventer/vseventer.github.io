@@ -1,0 +1,96 @@
+{% extends "../_layouts/default.njk" %}
+
+{% block content %}
+  <article class="c-post">
+    <header class="s-container s-container--breakout s-container--padded c-post__header c-post__header--large o-delta">
+      <h1 class="c-post__title">{{ title }}</h1>
+      <p class="c-post__subtitle">
+        <time datetime="{{- page.date | date("YYYY-MM-DD") -}}">{{ page.date | date("D MMMM YYYY") }}</time>
+      </p>
+    </header>
+    <div class="s-container s-container--padded">
+      <section class="c-post__content s-content">
+        {{ content | safe }}
+      </section>
+
+      <section class="c-post__share c-share u-spacer--xlarge">
+        <ul class="c-share__list c-share__list--center">
+          <li>
+            <a class="o-label o-label--contrast o-label--large share-twitter" href="https://twitter.com/intent/tweet?url={{- page.url | url | urlencode -}}&text={{- title | urlencode -}}&hashtags={{- page.data.tags | urlencode -}}">
+              <i class="fab fa-twitter"></i>&nbsp;
+              <span>{{ T.social__twitter }}</span>
+            </a>
+          </li>
+          <li>
+            <a class="o-label o-label--contrast o-label--large share-facebook" href="https://facebook.com/sharer/sharer.php?u={{- page.url | url | urlencode -}}">
+              <i class="fab fa-facebook"></i>&nbsp;
+              <span>{{ T.social__facebook }}</span>
+            </a>
+          </li>
+          <li>
+            <a class="o-label o-label--contrast o-label--large share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{- page.url | url | urlencode -}}&title={{- title | urlencode -}}&source={{- settings.title | urlencode -}}">
+              <i class="fab fa-linkedin"></i>&nbsp;
+              <span>{{ T.social__linkedin }}</span>
+            </a>
+          </li>
+          <li>
+            <a class="o-label o-label--contrast o-label--large share-email" href="mailto:?subject={{- title | urlencode -}}&body={{- page.url | url | urlencode -}}">
+              <i class="far fa-envelope"></i>&nbsp;
+              <span>{{ T.social__email }}</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      {% set currentItemIndex = 0 %}
+      {% for item in collections.blog %}
+        {% if item.url === page.url %}
+          {% set currentItemIndex = loop.index0 %}
+        {% endif %}
+      {% endfor %}
+
+      {% set prevItemIndex = currentItemIndex + 1 %}
+      {% set nextItemIndex = currentItemIndex - 1 %}
+
+      {% if (prevItemIndex < collections.blog.length) or (nextItemIndex >= 0) %}
+        <section class="c-post__related c-related o-zeta u-spacer u-border-bottom">
+          {% if prevItemIndex < collections.blog.length %}
+          {% set page = collections.blog[prevItemIndex] %}
+            <div class="c-related__next">
+              <p class="c-related__label">{{ T.related__next }}</p>
+              {% include "summary.njk" %}
+            </div>
+          {% endif %}
+          {% if nextItemIndex >= 0 %}
+            {% set page = collections.blog[nextItemIndex] %}
+            <div class="c-related__prev">
+              <p class="c-related__label">{{ T.related__prev }}</p>
+              {% include "summary.njk" %}
+            </div>
+          {% endif %}
+        </section>
+      {% endif %}
+
+      <section class="c-post__comments">
+        <div id="disqus_thread"></div>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+      </section>
+    </div>
+  </article>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+
+  <script>
+    if (process.env.NODE_ENV === 'production') {
+      // @see https://www.disqus.com/admin/universalcode/
+      (function() {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://{{- settings.disqus -}}.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+      })();
+    };
+  </script>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% if pagination.previous or pagination.next %}
+  <nav class="c-pagination" role="pagination">
+    <ul class="c-pagination__list">
+      {% if pagination.previous %}
+        <li class="c-pagination__prev">
+          <a class="c-pagination__link" href="{{- pagination.previousPageLink | url -}}">
+            {{ T.pagination__prev | format(pagination.pageNumber) }}
+          </a>
+        </li>
+      {% endif %}
+
+      <li class="c-pagination__current">{{ T.pagination__current | format(pagination.pageNumber + 1, pagination.hrefs.length) }}</li>
+
+      {% if pagination.next %}
+        <li class="c-pagination__next">
+          <a class="c-pagination__link" href="{{- pagination.nextPageLink | url -}}">
+            {{ T.pagination__next | format(pagination.pageNumber + 2) }}
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+{% endif %}

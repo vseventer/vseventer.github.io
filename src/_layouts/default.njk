@@ -1,13 +1,58 @@
+{% set T = i18n[settings.language] %}
 <!doctype html>
-<html lang="en">
+<html lang="{{- settings.language -}}">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ title }}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <link href="styles/main.css" rel="stylesheet" />
+    <title>{{ settings.title }}: {{ title }}</title>
+
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    {# In development, relax CSP. #}
+    {% set csp = "default-src 'none'; connect-src links.services.disqus.com; font-src 'self'; frame-src disqus.com c.disquscdn.com platform.twitter.com syndication.twitter.com; img-src 'self' data: c.disquscdn.com referrer.disqus.com *.twimg.com platform.twitter.com syndication.twitter.com; script-src 'self' c.disquscdn.com disqus.com vseventer.disqus.com cdn.syndication.twimg.com platform.twitter.com syndication.twitter.com 'sha256-ncj73IowkxkWqA+gh/v1bAToTGXDSC8Il7C/5HQl3fM='; style-src 'self' 'unsafe-inline' c.disquscdn.com platform.twitter.com; upgrade-insecure-requests" %}
+    {% if env.env === 'development' %}
+      {% set csp = "default-src 'none'; connect-src 'self'; font-src 'self'; frame-src platform.twitter.com syndication.twitter.com; img-src 'self' data: *.twimg.com platform.twitter.com syndication.twitter.com; script-src 'self' 'unsafe-inline' cdn.syndication.twimg.com platform.twitter.com syndication.twitter.com; style-src 'self' 'unsafe-inline' platform.twitter.com; upgrade-insecure-requests" %}
+    {% endif %}
+
+    <meta http-equiv="Content-Security-Policy" content="{{- csp | safe -}}" />
+
+    <link rel="stylesheet" href="{{- "/css/style.scss" | url -}}" />
+
+    {% block styles %}
+      {# Any additional styles can be inserted here. #}
+    {% endblock %}
+
+    <meta name="description" content="{{- page.excerpt | default(content) | striptags -}}" />
+
+    {% if not eleventyExcludeFromCollections %}
+      <link href="{{- page.url | url -}}" rel="canonical" />
+    {% endif %}
+
+    {% block head %}
+      {# Any custom heading code can be inserted here. #}
+    {% endblock %}
   </head>
   <body>
-    {{ content | safe }}
+    {% block header %}
+      {# Any leading HTML can be inserted here. #}
+
+      {% include "menu.njk" %}
+    {% endblock %}
+
+    {% block content %}
+      {{ content | safe }}
+    {% endblock %}
+
+    {% block footer %}
+      {# Any trailing HTML can be inserted here. #}
+    {% endblock %}
+
+    {% block scripts %}
+      {# Any additional scripts can be inserted here. #}
+
+      <script src="{{- "/js/main.js" | url }}"></script>
+    {% endblock %}
   </body>
 </html>
