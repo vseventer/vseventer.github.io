@@ -1,6 +1,7 @@
 # Changelog
 
-## 2.0.2
+## 2.0.2 (December 23, 2019)
+* Add blog post.
 * Increase pagination to 5 items per page.
 
 ## 2.0.1 (December 22, 2019)
