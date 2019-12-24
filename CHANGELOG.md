@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.0.3
+* Simplify previous and next post references.
+
 ## 2.0.2 (December 23, 2019)
 * Add blog post.
 * Increase pagination to 5 items per page.

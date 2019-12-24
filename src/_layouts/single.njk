@@ -42,27 +42,17 @@
         </ul>
       </section>
 
-      {% set currentItemIndex = 0 %}
-      {% for item in collections.blog %}
-        {% if item.url === page.url %}
-          {% set currentItemIndex = loop.index0 %}
-        {% endif %}
-      {% endfor %}
-
-      {% set prevItemIndex = currentItemIndex + 1 %}
-      {% set nextItemIndex = currentItemIndex - 1 %}
-
-      {% if (prevItemIndex < collections.blog.length) or (nextItemIndex >= 0) %}
+      {% if prevPost or nextPost %}
         <section class="c-post__related c-related o-zeta u-spacer u-border-bottom">
-          {% if prevItemIndex < collections.blog.length %}
-          {% set page = collections.blog[prevItemIndex] %}
+          {% if nextPost %}
+          {% set page = nextPost %}
             <div class="c-related__next">
               <p class="c-related__label">{{ T.related__next }}</p>
               {% include "summary.njk" %}
             </div>
           {% endif %}
-          {% if nextItemIndex >= 0 %}
-            {% set page = collections.blog[nextItemIndex] %}
+          {% if prevPost %}
+            {% set page = prevPost %}
             <div class="c-related__prev">
               <p class="c-related__label">{{ T.related__prev }}</p>
               {% include "summary.njk" %}

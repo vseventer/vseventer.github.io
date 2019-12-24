@@ -72,6 +72,17 @@ module.exports = (eleventyConfig) => {
   // @see https://www.11ty.io/docs/languages/markdown/
   eleventyConfig.setLibrary('md', markdownIt({ html: true }).use(markdownItFootnote));
 
+  // Add previous and next post references to blog collection.
+  // @see https://brycewray.com/posts/2019/12/previous-next-eleventy/
+  eleventyConfig.addCollection('blog', (collection) => {
+    const blogCollection = collection.getFilteredByTag('blog');
+    return blogCollection.map((page, index) => {
+      page.data.prevPost = blogCollection[index - 1];
+      page.data.nextPost = blogCollection[index + 1];
+      return page;
+    });
+  });
+
   // Parcel needs any linter configuration.
   eleventyConfig.addPassthroughCopy(joinPath(INPUT_DIRECTORY, '**/.*rc*'));
 
