@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.1.1 (April 8, 2020)
+* Update wedding section.
+
 ## 2.1.0 (February 2, 2020)
 * Add wedding section.
 * Simplify previous and next post references.

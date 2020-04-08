@@ -1,6 +1,6 @@
 ---
 layout: wedding
-title: Mark & Herta’s wedding
+title: Herta & Mark’s wedding
 ---
 Welcome to our wedding website, we can’t wait to celebrate our special day with you.
 

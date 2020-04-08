@@ -76,9 +76,9 @@
 {% block header %}
   <header class="m-2 text-center">
     <h1 class="leading-none w-text-brown text-6xl w-handwritten">
-      <a href="{%- link "wedding/index.md" | url -%}">Mark & Herta</a>
+      <a href="{%- link "wedding/index.md" | url -%}">Herta & Mark</a>
     </h1>
-    <h2 class="text-xl w-text-brown uppercase w-typewriter">Tuesday 12 May 2020</h2>
+    <h2 class="text-xl w-text-brown uppercase w-typewriter">Wednesday 1 July 2020</h2>
   </header>
 {% endblock %}
 
@@ -108,7 +108,7 @@
   <script>
     const target = document.getElementById('js-countdown');
     if (target) {
-      const deadline = new Date(2020, 4, 12); // Month is zero-indexed.
+      const deadline = new Date(2020, 6, 1); // Month is zero-indexed.
       const currentTime = Date.now ? Date.now() : (new Date()).getTime();
       const daysLeft = (deadline.getTime() - currentTime) / 1000 / 60 / 60 / 24;
       target.textContent = daysLeft < 0 ? 0 : (daysLeft | 0) + 1;
