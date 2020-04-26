@@ -1,1 +1,0 @@
-(function () {if(document.querySelector(".twitter-tweet")){var a=document.createElement("script");a.async=!0,a.setAttribute("src","//platform.twitter.com/widgets.js"),document.body.appendChild(a)}})();
