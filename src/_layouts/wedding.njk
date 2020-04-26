@@ -4,69 +4,7 @@
 {% endblock %}
 
 {% block styles %}
-  <link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet" />
-  <link href="https://use.typekit.net/clm3ccl.css" rel="stylesheet" />
-  <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-
-  <style>
-    @font-face {
-      font-family: 'EnglandHandDB';
-      src: url('/fonts/england.ttf') format('truetype');
-    }
-    @font-face { /* Webfont: CatalinaTypewriter */
-      font-family: 'CatalinaTypewriter';
-      src: url('/fonts/CatalinaTypewriter.eot'); /* IE9 Compat Modes */
-      src: url('/fonts/CatalinaTypewriter.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-           url('/fonts/CatalinaTypewriter.woff') format('woff'), /* Modern Browsers */
-           url('/fonts/CatalinaTypewriter.ttf') format('truetype'), /* Safari, Android, iOS */
-           url('/fonts/CatalinaTypewriter.svg#CatalinaTypewriter') format('svg'); /* Legacy iOS */
-      font-style: normal;
-      font-weight: normal;
-      text-rendering: optimizeLegibility;
-    }
-
-    .w-title {
-      font-family: droid-serif, droid-serif, serif;
-    }
-    .w-heading {
-      font-family: 'Bebas Neue', bebas, cursive;
-    }
-    .w-typewriter {
-      font-family: catalinatypewriter, monospace;
-    }
-    .w-handwritten {
-      font-family: EnglandHandDB, cursive;
-    }
-
-    .w-border-gold {
-      border-color: #d8b478;
-    }
-    .w-text-gold {
-      color: #d8b478;
-    }
-    .w-text-brown {
-      color: #69635A;
-    }
-
-    .w-border-brown {
-      border-color: #69635A;
-    }
-
-    @media only screen and (min-width: 640px) {
-      .w-container {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-      }
-      .w-welcome {
-        border-bottom-width: 0;
-        border-right-width: 4px;
-      }
-    }
-
-    p + p {
-      margin-top: 0.5rem;
-    }
-  </style>
+  <link rel="stylesheet" href="~src/styles/wedding.css" />
 {% endblock %}
 
 {% block head %}
@@ -75,43 +13,37 @@
 
 {% block header %}
   <header class="m-2 text-center">
-    <h1 class="leading-none w-text-brown text-6xl w-handwritten">
+    <h1 class="leading-none text-brown text-6xl font-handwriting">
       <a href="{%- link "wedding/index.md" | url -%}">Herta & Mark</a>
     </h1>
-    <h2 class="text-xl w-text-brown uppercase w-typewriter">Wednesday 1 July 2020</h2>
+    <h2 class="text-xl text-brown uppercase font-typewriter">Wednesday 1 July 2020</h2>
   </header>
 {% endblock %}
 
 {% block content %}
-  <div class="border-b-4 border-t-4 w-border-brown m-2 text-center w-container">
-    <div class="border-b-4 w-border-brown p-2 w-title w-welcome" style="grid-row: span 2">
-      <h3 class="mb-2 w-text-gold text-xl uppercase w-typewriter">Welcome</h3>
+  <div class="grid grid-cols-1 md:grid-rows-2 md:grid-cols-2 border-b-4 border-t-4 border-brown m-2 text-center">
+    <div class="md:row-start-1 md:row-end-3 border-b-4 md:border-b-0 md:border-r-4 border-brown p-2 font-title">
+      <h3 class="mb-2 text-gold text-xl uppercase font-typewriter">Welcome</h3>
       {{ content | safe }}
     </div>
-    <div class="border-b-4 w-border-brown p-2 text-center" style="grid-column: 2; align-self: baseline">
-      <h3 class="mb-2 w-text-gold text-xl uppercase w-typewriter">Countdown</h3>
-      <p class="w-heading">
-        <span class="leading-none w-text-brown text-5xl w-title" id="js-countdown"></span><br />days
-        <p class="uppercase w-typewriter">Until the big day!</p>
+    <div class="md:col-start-2 border-b-4 border-brown p-2 text-center" style="align-self: baseline">
+      <h3 class="mb-2 text-gold text-xl uppercase font-typewriter">Countdown</h3>
+      <p class="font-heading">
+        <span class="leading-none text-brown text-5xl font-title" id="js-countdown"></span><br />days
+        <p class="uppercase font-typewriter">Until the big day!</p>
       </p>
     </div>
-    <div class="p-2 text-center" style="grid-column: 2">
-      <h3 class="mb-2 w-text-gold text-xl uppercase w-typewriter">Are you in?</h3>
-      <a class="inline-block border-2 w-border-gold p-1" href="{%- link "wedding/rsvp.njk" | url -%}">
-        <p class="border w-border-gold p-2 text-3xl w-title">RSVP</p>
+    <div class="md:col-start-2 p-2 text-center">
+      <h3 class="mb-2 text-gold text-xl uppercase font-typewriter">Are you in?</h3>
+      <a class="inline-block border-2 border-gold p-1" href="{%- link "wedding/rsvp.njk" | url -%}">
+        <p class="border border-gold p-2 text-3xl font-title">RSVP</p>
       </a>
     </div>
   </div>
 {% endblock %}
 
 {% block scripts %}
-  <script>
-    const target = document.getElementById('js-countdown');
-    if (target) {
-      const deadline = new Date(2020, 6, 1); // Month is zero-indexed.
-      const currentTime = Date.now ? Date.now() : (new Date()).getTime();
-      const daysLeft = (deadline.getTime() - currentTime) / 1000 / 60 / 60 / 24;
-      target.textContent = daysLeft < 0 ? 0 : (daysLeft | 0) + 1;
-    }
-  </script>
+  {{ super() }}
+
+  <script src="~src/scripts/wedding.js" async></script>
 {% endblock %}

@@ -68,19 +68,3 @@
     </div>
   </article>
 {% endblock %}
-
-{% block scripts %}
-  {{ super() }}
-
-  <script>
-    if (process.env.NODE_ENV === 'production') {
-      // @see https://www.disqus.com/admin/universalcode/
-      (function() {
-        var d = document, s = d.createElement('script');
-        s.src = 'https://{{- settings.disqus -}}.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-      })();
-    };
-  </script>
-{% endblock %}

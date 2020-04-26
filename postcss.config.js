@@ -5,9 +5,11 @@ import { join as joinPath } from 'path';
 
 // Package modules.
 import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
 import purgecss from '@fullhuman/postcss-purgecss';
 import reporter from 'postcss-reporter';
 import stylelint from 'stylelint';
+import tailwind from 'tailwindcss';
 
 // Local modules.
 import { config } from './package.json';
@@ -30,14 +32,19 @@ const isTruthy = (x) => !!x;
 module.exports = {
   plugins: [
     stylelint(),
+    tailwind(),
     PRODUCTION && purgecss({
-      // Purge using templates rather than the full output.
-      // content: [joinPath(INPUT_DIRECTORY, `**/*.{${ELEVENTY_TEMPLATE_LANGUAGES}}`)],
+      // Purge using full output (more precise, but slow).
       content: [joinPath(INTERMEDIATE_DIRECTORY, '**/*.html')],
+      // Purge using templates (fast, but lots of false negatives).
+      // content: [joinPath(INPUT_DIRECTORY, `**/*.{${ELEVENTY_TEMPLATE_LANGUAGES}}`)],
+      defaultExtractor: (content) => content.match(/[\w-:]+/g) || [],
       fontFace: true,
-      keyframes: true
+      keyframes: true,
+      variables: true
     }),
     autoprefixer(),
+    PRODUCTION && cssnano(),
     reporter({ clearReportedMessages: true })
   ].filter(isTruthy)
 };
