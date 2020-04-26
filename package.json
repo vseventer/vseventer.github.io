@@ -39,7 +39,7 @@
     "prebuild": "run-s lint",
     "build": "NODE_ENV=production run-s 11ty webpack",
 
-    "worktree:add": "cross-env git worktree add -B gh-pages $npm_package_config_output origin/gh-pages",
+    "worktree:add": "cross-env git worktree add -B master $npm_package_config_output origin/master",
     "worktree:clean": "cd $npm_package_config_output && git rm -r .",
     "worktree:prune": "cross-env git worktree remove $npm_package_config_output",
     "worktree:push": "cd $npm_package_config_output && git add -A . && git commit --allow-empty && git push -u origin",
