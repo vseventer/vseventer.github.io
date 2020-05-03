@@ -11,16 +11,31 @@ module.exports = {
       center: true
     },
     extend: {
-      colors: {
-        brown: '#69635A',
-        gold: '#d8b478'
+      // @see https://tailwindcss.com/docs/border-color/#border-colors
+      borderColor: {
+        default: 'var(--color-neutral)'
       },
+
+      // @see https://tailwindcss.com/docs/customizing-colors/#naming-your-colors
+      colors: {
+        primary: 'var(--color-primary)',
+        secondary: 'var(--color-secondary)',
+        complementary: 'var(--color-complementary)',
+        neutral: 'var(--color-neutral)'
+      },
+
+      // @see https://tailwindcss.com/docs/font-family/#customizing
       fontFamily: {
-        heading: ['Bebas Neue', ...fontFamily.sans],
-        handwriting: ['EnglandHandDB', 'cursive'],
+        handwriting: ['Luxus Brut', 'cursive'],
         title: ['droid-serif', ...fontFamily.serif],
         typewriter: ['CatalinaTypewriter', ...fontFamily.mono]
-      }
+      },
+
+      // @see https://tailwindcss.com/docs/margin/
+      margin: (theme) => ({
+        // @see https://tailwindcss.com/docs/margin/#negative-values
+        '-6': `-${theme('spacing.6')}`
+      })
     }
   }
 };

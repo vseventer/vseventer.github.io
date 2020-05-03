@@ -6,8 +6,10 @@ import {
   relative as relativePath
 } from 'path';
 import { URL as NodeURL } from 'url';
+import { inspect } from 'util';
 
 // Package modules.
+import eleventyNavigationPlugin from '@11ty/eleventy-navigation';
 import fetch from 'node-fetch';
 import markdownIt from 'markdown-it';
 import markdownItFootnote from 'markdown-it-footnote';
@@ -16,12 +18,22 @@ import { sprintf } from 'sprintf-js';
 
 // Local modules.
 import { config, homepage } from './package.json';
+import NunjucksEvalExtension from './lib/nunjucks/tags/eval';
 import NunjucksLinkExtension from './lib/nunjucks/tags/link';
 
 // Constants.
 const INPUT_DIRECTORY = config.input;
 // const INTERMEDIATE_DIRECTORY = config.intermediate;
 // const OUTPUT_DIRECTORY = config.output;
+
+// Configure.
+// @see https://github.com/markdown-it/markdown-it#init-with-presets-and-options
+const markdownRenderer = markdownIt({
+  html: true,
+  breaks: true,
+  linkify: true,
+  typographer: true
+}).use(markdownItFootnote);
 
 // Exports.
 module.exports = (eleventyConfig) => {
@@ -32,9 +44,10 @@ module.exports = (eleventyConfig) => {
     excerpt_separator: '<!-- excerpt -->'
   });
 
-  // Add Markdown plugins.
-  // @see https://www.11ty.io/docs/languages/markdown/
-  eleventyConfig.setLibrary('md', markdownIt({ html: true }).use(markdownItFootnote));
+  // Customize Markdown parsing.
+  // @see https://www.11ty.dev/docs/languages/markdown/
+  eleventyConfig.addFilter('markdown', (value) => markdownRenderer.render(`${value}`));
+  eleventyConfig.setLibrary('md', markdownRenderer);
 
   // Add previous and next post references to blog collection.
   // @see https://brycewray.com/posts/2019/12/previous-next-eleventy/
@@ -51,14 +64,20 @@ module.exports = (eleventyConfig) => {
   // @see https://www.11ty.io/docs/copy/
   eleventyConfig.addPassthroughCopy(joinPath(INPUT_DIRECTORY, '**/*.txt'));
 
+  // Add plugins.
+  // @see https://www.11ty.dev/docs/plugins/navigation/
+  eleventyConfig.addPlugin(eleventyNavigationPlugin);
+
   // Add universal filters.
   // @see https://www.11ty.io/docs/filters/
   eleventyConfig.addFilter('date', (date, format) => moment(date).format(format));
+  eleventyConfig.addFilter('debug', inspect);
   eleventyConfig.addFilter('format', sprintf);
   eleventyConfig.addFilter('parseUrl', (input) => (new NodeURL(input, homepage)).href);
 
   // Add custom tags.
   // @see https://www.11ty.io/docs/shortcodes/
+  eleventyConfig.addNunjucksTag('eval', NunjucksEvalExtension.singleton);
   eleventyConfig.addNunjucksTag('link', NunjucksLinkExtension.singleton);
 
   // Add shortcode.

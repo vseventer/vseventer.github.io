@@ -1,9 +1,17 @@
 // Standard lib.
-import { resolve as resolvePath } from 'path';
-import { parse as parseQueryString } from 'querystring';
+import {
+  dirname,
+  relative as relativePath,
+  resolve as resolvePath
+} from 'path';
+import { parse as parseUrl } from 'url';
 
 // Package modules.
 import globby from 'globby';
+import imageminMozjpeg from 'imagemin-mozjpeg';
+import ImageminPlugin from 'imagemin-webpack-plugin';
+import { parseQuery } from 'loader-utils';
+import sharp from 'responsive-loader/sharp';
 import { DefinePlugin, EnvironmentPlugin } from 'webpack';
 
 // Local modules.
@@ -17,12 +25,11 @@ const NODE_MODULE_DIRECTORY = resolvePath(__dirname, 'node_modules');
 const OUTPUT_DIRECTORY = resolvePath(__dirname, config.output);
 const PRODUCTION = process.env.NODE_ENV === 'production';
 const STAGING = process.env.NODE_ENV === 'staging';
-const WEBFONTS_DIRECTORY = resolvePath(INPUT_DIRECTORY, 'fonts');
 
 // Helpers.
 const generateName = (defaultName) => (
-  (_, query = '?') => {
-    const { name } = parseQueryString(query.substr(1));
+  (_, query) => {
+    const { name } = parseQuery(query || '?');
     return name || defaultName;
   }
 );
@@ -30,7 +37,7 @@ const generateName = (defaultName) => (
 // Exports.
 module.exports = {
   // Dynamic entry with all files in intermediate.
-  context: INTERMEDIATE_DIRECTORY,
+  context: INPUT_DIRECTORY,
   entry: () => globby('*', {
     absolute: true,
     baseNameMatch: true,
@@ -51,7 +58,10 @@ module.exports = {
         use: [
           {
             loader: 'file-loader',
-            options: { name: generateName('[path][name].[ext]') }
+            options: {
+              context: INTERMEDIATE_DIRECTORY,
+              name: generateName('[path][name].[ext]')
+            }
           },
           'extract-loader',
           'html-loader'
@@ -64,7 +74,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: generateName(
-                PRODUCTION ? 'styles/[name].[contenthash:8].css' : 'styles/[name].css'
+                PRODUCTION ? '[path][name].[contenthash:8].css' : '[path][name].css'
               )
             }
           },
@@ -95,9 +105,14 @@ module.exports = {
           {
             loader: 'spawn-loader',
             options: {
-              name: generateName(
-                PRODUCTION ? 'scripts/[name].[contenthash:8].js' : 'scripts/[name].js'
-              )
+              // @see https://webpack.js.org/configuration/output/#outputfilename
+              name: (chunkData) => {
+                const { resource } = chunkData.chunk.entryModule;
+                const path = dirname(relativePath(INPUT_DIRECTORY, resource));
+                return generateName(
+                  PRODUCTION ? `${path}/[name].[contenthash:8].js` : `${path}/[name].js`
+                )(resource, parseUrl(resource).search);
+              }
             }
           },
           'babel-loader',
@@ -105,25 +120,23 @@ module.exports = {
         ]
       },
       {
-        test: /\.(gif|jpe?g|svg|png|webm)$/i,
-        exclude: WEBFONTS_DIRECTORY,
+        test: /\.(heic|jpe?g|png|tiff|webp)$/i,
         use: {
-          loader: 'file-loader',
+          loader: 'responsive-loader',
           options: {
-            name: generateName(
-              PRODUCTION ? 'images/[name].[contenthash:8].[ext]' : 'images/[name].[ext]'
-            )
+            adapter: sharp,
+            name: PRODUCTION ? '[path][name].[contenthash:8].[ext]' : '[path][name].[ext]',
+            quality: 100
           }
         }
       },
       {
-        test: /\.(eot|otf|svg|ttf|woff2?)$/i,
-        include: WEBFONTS_DIRECTORY,
+        test: /\.(eot|gif|otf|svg|ttf|woff2?)$/i,
         use: {
           loader: 'file-loader',
           options: {
             name: generateName(
-              PRODUCTION ? 'fonts/[name].[contenthash:8].[ext]' : 'fonts/[name].[ext]'
+              PRODUCTION ? '[path][name].[contenthash:8].[ext]' : '[path][name].[ext]'
             )
           }
         }
@@ -132,19 +145,39 @@ module.exports = {
         test: /\.txt$/i,
         use: {
           loader: 'file-loader',
-          options: { name: generateName('[path][name].[ext]') }
+          options: {
+            context: INTERMEDIATE_DIRECTORY,
+            name: generateName('[path][name].[ext]')
+          }
         }
       }
     ]
   },
   plugins: [
     new DefinePlugin({ settings: JSON.stringify(settings) }),
-    new EnvironmentPlugin({ WEBPACK_DEV_SERVER: false })
+    new EnvironmentPlugin({ WEBPACK_DEV_SERVER: false }),
+    new ImageminPlugin({
+      disable: !PRODUCTION,
+      gifsicle: { optimizationLevel: 3 },
+      jpegtran: null, // Disabled because we're using mozjpeg.
+      optipng: null, // Disabled because we're using pngquant.
+      plugins: [
+        imageminMozjpeg({ quality: 80, progressive: true })
+      ],
+      pngquant: { speed: 1, strip: true },
+      test: '**/*.{gif,jpeg,jpg,png,svg}'
+    })
   ],
   resolve: {
-    alias: { src: INPUT_DIRECTORY }
+    modules: [INPUT_DIRECTORY, NODE_MODULE_DIRECTORY]
   },
   devServer: {
     ...STAGING && { host: '0.0.0.0' }
+  },
+  stats: {
+    children: false,
+    entrypoints: false,
+    hash: false,
+    modules: false
   }
 };

@@ -7,6 +7,7 @@ import { join as joinPath } from 'path';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import purgecss from '@fullhuman/postcss-purgecss';
+import customProperties from 'postcss-custom-properties';
 import reporter from 'postcss-reporter';
 import stylelint from 'stylelint';
 import tailwind from 'tailwindcss';
@@ -43,6 +44,7 @@ module.exports = {
       keyframes: true,
       variables: true
     }),
+    customProperties(({ preserve: !PRODUCTION })),
     autoprefixer(),
     PRODUCTION && cssnano(),
     reporter({ clearReportedMessages: true })
