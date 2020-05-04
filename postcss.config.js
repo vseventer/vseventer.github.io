@@ -4,10 +4,9 @@
 import { join as joinPath } from 'path';
 
 // Package modules.
-import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
+import presetEnv from 'postcss-preset-env';
 import purgecss from '@fullhuman/postcss-purgecss';
-import customProperties from 'postcss-custom-properties';
 import reporter from 'postcss-reporter';
 import stylelint from 'stylelint';
 import tailwind from 'tailwindcss';
@@ -34,6 +33,7 @@ module.exports = {
   plugins: [
     stylelint(),
     tailwind(),
+    presetEnv({ preserve: !PRODUCTION }),
     PRODUCTION && purgecss({
       // Purge using full output (more precise, but slow).
       content: [joinPath(INTERMEDIATE_DIRECTORY, '**/*.html')],
@@ -44,8 +44,6 @@ module.exports = {
       keyframes: true,
       variables: true
     }),
-    customProperties(({ preserve: !PRODUCTION })),
-    autoprefixer(),
     PRODUCTION && cssnano(),
     reporter({ clearReportedMessages: true })
   ].filter(isTruthy)
