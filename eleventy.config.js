@@ -9,11 +9,11 @@ import { URL as NodeURL } from 'url';
 import { inspect } from 'util';
 
 // Package modules.
+import { format as dateFormat } from 'date-fns';
 import eleventyNavigationPlugin from '@11ty/eleventy-navigation';
-import fetch from 'node-fetch';
 import markdownIt from 'markdown-it';
 import markdownItFootnote from 'markdown-it-footnote';
-import moment from 'moment';
+import fetch from 'node-fetch';
 import { sprintf } from 'sprintf-js';
 
 // Local modules.
@@ -70,7 +70,7 @@ module.exports = (eleventyConfig) => {
 
   // Add universal filters.
   // @see https://www.11ty.io/docs/filters/
-  eleventyConfig.addFilter('date', (date, format) => moment(date).format(format));
+  eleventyConfig.addFilter('date', dateFormat);
   eleventyConfig.addFilter('debug', inspect);
   eleventyConfig.addFilter('format', sprintf);
   eleventyConfig.addFilter('parseUrl', (input) => (new NodeURL(input, homepage)).href);
