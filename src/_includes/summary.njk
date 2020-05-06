@@ -8,6 +8,6 @@
     </p>
   </header>
   <section class="c-post__content s-content u-spacer--small">
-    {{ page.data.page.excerpt | safe }}
+    {{ utils.eval(page.data.page.excerpt) | markdown | safe }}
   </section>
 </article>

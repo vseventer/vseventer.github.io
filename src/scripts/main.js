@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'production' && document.getElementById('disqus_thr
 // Embed bundle in live mode.
 if (process.env.WEBPACK_DEV_SERVER) {
   const el = document.createElement('script');
-  el.src = `${__webpack_public_path__}scripts/bundle.js`;
+  el.src = `${__webpack_public_path__}scripts/runtime.js`;
   el.async = true;
   document.body.appendChild(el);
 }
