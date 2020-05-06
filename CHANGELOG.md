@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.0.1
+* Add blog post.
+
 ## 3.0.0 (April 26, 2020)
 * Refactor to use [eleventy-webpack-boilerplate](https://github.com/vseventer/eleventy-webpack-boilerplate).
 
