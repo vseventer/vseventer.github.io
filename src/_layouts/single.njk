@@ -2,39 +2,39 @@
 
 {% block content %}
   <article class="c-post">
-    <header class="s-container s-container--breakout s-container--padded c-post__header c-post__header--large o-delta">
-      <h1 class="c-post__title">{{ title }}</h1>
-      <p class="c-post__subtitle">
+    <header class="c-hero">
+      <h1 class="c-hero__title">{{ title }}</h1>
+      <p class="c-hero__subtitle">
         <time datetime="{{- page.date | date("yyyy-MM-dd") -}}">{{ page.date | date("d MMMM yyyy") }}</time>
       </p>
     </header>
-    <div class="s-container s-container--padded">
-      <section class="c-post__content s-content">
+    <div class="container md:max-w-screen-sm">
+      <section class="s-content">
         {{ content | safe }}
       </section>
 
-      <section class="c-post__share c-share u-spacer--xlarge">
-        <ul class="c-share__list c-share__list--center">
+      <section class="c-post__section c-post__section--mt c-share">
+        <ul class="c-share__list">
           <li>
-            <a class="o-label o-label--contrast o-label--large share-twitter" href="https://twitter.com/intent/tweet?url={{- page.url | url | parseUrl | urlencode -}}&text={{- title | urlencode -}}&hashtags={{- page.data.tags | urlencode -}}">
+            <a class="c-share__label c-share__twitter" href="https://twitter.com/intent/tweet?url={{- page.url | url | parseUrl | urlencode -}}&text={{- title | urlencode -}}&hashtags={{- page.data.tags | urlencode -}}">
               <i class="fab fa-twitter"></i>&nbsp;
               <span>{{ T.social__twitter }}</span>
             </a>
           </li>
           <li>
-            <a class="o-label o-label--contrast o-label--large share-facebook" href="https://facebook.com/sharer/sharer.php?u={{- page.url | url | parseUrl | urlencode -}}">
+            <a class="c-share__label c-share__facebook" href="https://facebook.com/sharer/sharer.php?u={{- page.url | url | parseUrl | urlencode -}}">
               <i class="fab fa-facebook"></i>&nbsp;
               <span>{{ T.social__facebook }}</span>
             </a>
           </li>
           <li>
-            <a class="o-label o-label--contrast o-label--large share-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{- page.url | url | parseUrl | urlencode -}}&title={{- title | urlencode -}}&source={{- settings.title | urlencode -}}">
+            <a class="c-share__label c-share__linkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url={{- page.url | url | parseUrl | urlencode -}}&title={{- title | urlencode -}}&source={{- settings.title | urlencode -}}">
               <i class="fab fa-linkedin"></i>&nbsp;
               <span>{{ T.social__linkedin }}</span>
             </a>
           </li>
           <li>
-            <a class="o-label o-label--contrast o-label--large share-email" href="mailto:?subject={{- title | urlencode -}}&body={{- page.url | url | parseUrl | urlencode -}}">
+            <a class="c-share__label c-share__email" href="mailto:?subject={{- title | urlencode -}}&body={{- page.url | url | parseUrl | urlencode -}}">
               <i class="far fa-envelope"></i>&nbsp;
               <span>{{ T.social__email }}</span>
             </a>
@@ -43,17 +43,17 @@
       </section>
 
       {% if prevPost or nextPost %}
-        <section class="c-post__related c-related o-zeta u-spacer u-border-bottom">
+        <section class="c-post__section c-related text-zeta">
           {% if nextPost %}
           {% set page = nextPost %}
-            <div class="c-related__next">
+            <div class="c-related__item c-related__next">
               <p class="c-related__label">{{ T.related__next }}</p>
               {% include "summary.njk" %}
             </div>
           {% endif %}
           {% if prevPost %}
             {% set page = prevPost %}
-            <div class="c-related__prev">
+            <div class="c-related__item c-related__prev">
               <p class="c-related__label">{{ T.related__prev }}</p>
               {% include "summary.njk" %}
             </div>
@@ -61,7 +61,7 @@
         </section>
       {% endif %}
 
-      <section class="c-post__comments">
+      <section class="c-post__section">
         <div id="disqus_thread"></div>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
       </section>

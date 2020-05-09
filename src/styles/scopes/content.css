@@ -1,0 +1,29 @@
+/* Block */
+.s-content {
+  & * + * {
+    @apply mt-sm;
+  }
+
+  & * + h1,
+  & * + h2,
+  & * + h3,
+  & * + h4,
+  & * + h5,
+  & * + h6 {
+    @apply mt-md;
+  }
+
+  & ol {
+    list-style-type: decimal;
+  }
+  & ul {
+    list-style-type: initial;
+  }
+  & li + li {
+    @apply mt-xs;
+  }
+
+  & .footnotes-sep {
+    @apply mt-xl;
+  }
+}

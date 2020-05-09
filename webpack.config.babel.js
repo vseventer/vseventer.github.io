@@ -12,7 +12,10 @@ import imageminMozjpeg from 'imagemin-mozjpeg';
 import ImageminPlugin from 'imagemin-webpack-plugin';
 import { parseQuery } from 'loader-utils';
 import sharp from 'responsive-loader/sharp';
-import { DefinePlugin, EnvironmentPlugin } from 'webpack';
+import {
+  DefinePlugin,
+  EnvironmentPlugin
+} from 'webpack';
 
 // Local modules.
 import { config } from './package.json';
@@ -27,10 +30,16 @@ const PRODUCTION = process.env.NODE_ENV === 'production';
 const STAGING = process.env.NODE_ENV === 'staging';
 
 // Helpers.
-const generateName = (defaultName) => (
-  (_, query) => {
-    const { name } = parseQuery(query || '?');
-    return name || defaultName;
+const generateName = (defaultName, defaultPath = '') => (
+  (resourcePath, resourceQuery) => {
+    const { name } = parseQuery(resourceQuery || '?');
+    const result = name || defaultName;
+
+    // If resource is a module, simplify [path] to avoid /_/node_modules/....
+    if (resourcePath.includes('/node_modules/')) {
+      return result.replace(/\[path\]/g, defaultPath);
+    }
+    return result;
   }
 );
 
@@ -64,37 +73,41 @@ module.exports = {
             }
           },
           'extract-loader',
-          'html-loader'
+          {
+            loader: 'html-loader',
+            options: {
+              attributes: {
+                list: [
+                  { tag: 'img', attribute: 'src', type: 'src' },
+                  { tag: 'img', attribute: 'srcset', type: 'srcset' },
+                  { tag: 'link', attribute: 'href', type: 'src' },
+                  { tag: 'script', attribute: 'src', type: 'src' }
+                ]
+              }
+            }
+          }
         ]
       },
       {
-        test: /\.(css|s[ac]ss)$/i,
+        test: /\.css$/i,
         use: [
           {
             loader: 'file-loader',
             options: {
               name: generateName(
-                PRODUCTION ? '[path][name].[contenthash:8].css' : '[path][name].css'
+                PRODUCTION ? '[path][name].[contenthash:8].[ext]' : '[path][name].[ext]',
+                'styles/'
               )
             }
           },
           'extract-loader',
           {
             loader: 'css-loader',
-            options: { esModule: true, sourceMap: !PRODUCTION }
+            options: { esModule: true, import: false, sourceMap: !PRODUCTION }
           },
           {
             loader: 'postcss-loader',
             options: { sourceMap: !PRODUCTION }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              sassOptions: {
-                includePaths: [NODE_MODULE_DIRECTORY]
-              },
-              sourceMap: !PRODUCTION
-            }
           }
         ]
       },
@@ -110,7 +123,8 @@ module.exports = {
                 const { resource } = chunkData.chunk.entryModule;
                 const path = dirname(relativePath(INPUT_DIRECTORY, resource));
                 return generateName(
-                  PRODUCTION ? `${path}/[name].[contenthash:8].js` : `${path}/[name].js`
+                  PRODUCTION ? `${path}/[name].[contenthash:8].js` : `${path}/[name].js`,
+                  'scripts/'
                 )(resource, parseUrl(resource).search);
               }
             }
@@ -136,7 +150,8 @@ module.exports = {
           loader: 'file-loader',
           options: {
             name: generateName(
-              PRODUCTION ? '[path][name].[contenthash:8].[ext]' : '[path][name].[ext]'
+              PRODUCTION ? '[path][name].[contenthash:8].[ext]' : '[path][name].[ext]',
+              'fonts/'
             )
           }
         }

@@ -1,0 +1,7 @@
+/* Variables. */
+:root {
+  --color-primary: #1b3d3e; /* Dark blue */
+  --color-secondary: #008181; /* Bright blue */
+  --color-complementary: #BFE0E0; /* Faded blue */
+  --color-neutral: #929394; /* Gray */
+}

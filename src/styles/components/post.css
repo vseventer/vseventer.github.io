@@ -1,0 +1,29 @@
+/* Block */
+/*.c-post {  }*/
+
+/* Elements */
+.c-post__link:any-link {
+  @apply text-black;
+}
+
+/*.c-post__title {  }*/
+.c-post__subtitle {
+  @apply mt-sm text-neutral;
+}
+
+.c-post__content {
+  @apply mt-sm;
+}
+
+.c-post__section {
+  @apply border-t py-md;
+
+  &:first-child {
+    @apply border-t-0;
+  }
+}
+
+/* Modifiers */
+.c-post__section--mt {
+  @apply mt-xl;
+}

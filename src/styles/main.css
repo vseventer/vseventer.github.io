@@ -1,0 +1,22 @@
+/* @see https://tailwindcss.com/docs/adding-base-styles/ */
+/* Package modules */
+@import "@fortawesome/fontawesome-free/css/fontawesome.css";
+@import "@fortawesome/fontawesome-free/css/brands.css";
+@import "@fortawesome/fontawesome-free/css/regular.css";
+
+/* Base */
+@import './theme.css';
+@import './base.css';
+
+/* Components */
+@import './components/hero.css';
+@import './components/menu.css';
+@import './components/pagination.css';
+@import './components/post.css';
+@import './components/related.css';
+@import './components/share.css';
+@import './scopes/content.css';
+
+/* Utilities */
+@tailwind utilities;
+@tailwind screens;

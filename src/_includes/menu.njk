@@ -1,26 +1,26 @@
 <nav class="c-menu">
-  <div class="s-container s-container--padded">
+  <div class="container md:max-w-screen-sm">
     <ul class="c-menu__list">
       <li class="menu-home">
         <a class="c-menu__link" href="{%- link "index.md" | url -%}">{{ T.home }}</a>
       </li>
 
-      <li class="menu-github">
+      <li class="flex-grow text-right menu-github">
         <a class="c-menu__link" href="https://github.com/vseventer">
           <i class="fab fa-lg fa-github"></i>
-          <span class="c-menu__label">GitHub</span>
+          <span class="sr-only">GitHub</span>
         </a>
       </li>
       <li class="menu-linkedin">
         <a class="c-menu__link" href="https://www.linkedin.com/in/markvanseventer/">
           <i class="fab fa-lg fa-linkedin"></i>
-          <span class="c-menu__label">LinkedIn</span>
+          <span class="sr-only">LinkedIn</span>
         </a>
       </li>
       <li class="menu-twitter">
         <a class="c-menu__link" href="https://twitter.com/vseventer">
           <i class="fab fa-lg fa-twitter"></i>
-          <span class="c-menu__label">Twitter</span>
+          <span class="sr-only">Twitter</span>
         </a>
       </li>
     </ul>

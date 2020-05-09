@@ -5,7 +5,7 @@
 <html lang="{{- settings.language -}}">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <title>{{- title }} • {{ settings.title -}}</title>
 
@@ -27,13 +27,13 @@
     {% endif %}
 
     {% block styles %}
-      <link rel="stylesheet" href="~styles/style.scss" />
+      <link rel="stylesheet" href="~styles/main.css" />
 
       {# Any additional styles can be inserted here. #}
     {% endblock %}
 
     {% if not eleventyExcludeFromCollections %}
-      <link href="{{- page.url | url | parseUrl -}}" rel="canonical" />
+      <link rel="canonical" href="{{- page.url | url | parseUrl -}}" />
     {% endif %}
 
     {% block head %}
