@@ -2,7 +2,7 @@
 
 # Disallow crawling of all static content
 User-agent: *
-Disallow: /css/
+Disallow: /scripts/
+Disallow: /styles/
 Disallow: /fonts/
-Disallow: /img/
-Disallow: /js/
+Disallow: /images/
