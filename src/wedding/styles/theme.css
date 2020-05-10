@@ -1,0 +1,47 @@
+/* Fonts. */
+@font-face { /* Webfont: CatalinaTypewriter */
+  font-family: CatalinaTypewriter;
+  src: url('../fonts/CatalinaTypewriter.eot'); /* IE9 Compat Modes */
+  src:
+    url('../fonts/CatalinaTypewriter.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/CatalinaTypewriter.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/CatalinaTypewriter.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/CatalinaTypewriter.svg#CatalinaTypewriter') format('svg'); /* Legacy iOS */
+  font-display: swap;
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+
+@font-face {
+  font-family: droid-serif;
+  src: url('../fonts/DroidSerif-Regular.ttf') format('truetype'); /* Safari, Android, iOs */
+  font-display: optional;
+}
+/*
+@font-face {
+  font-family: EnglandHandDB;
+  src: url('../fonts/england.ttf') format("truetype");
+  font-display: swap;
+}*/
+
+@font-face {
+  font-family: 'LuxusBrut';
+  src: url('../fonts/LuxusBrut/LuxusBrut.eot'); /* IE9 Compat Modes */
+  src:
+    local('Luxus Brut'), local('LuxusBrut'),
+    url('../fonts/LuxusBrut/LuxusBrut.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/LuxusBrut/LuxusBrut.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/LuxusBrut/LuxusBrut.ttf') format('truetype'); /* Safari, Android, iOS */
+  font-display: block;
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* Variables. */
+:root {
+  --color-primary: #f0c2c8; /* Blush - FFF4FB */
+  --color-secondary: #69635A; /* Brown */
+  --color-complementary: #D8B478; /* Gold */
+  --color-neutral: theme('colors.gray.100');
+}

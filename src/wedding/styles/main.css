@@ -1,0 +1,142 @@
+/* @see https://tailwindcss.com/docs/adding-base-styles/ */
+@import './theme.css';
+
+@tailwind base;
+
+/* Base. */
+body {
+  @apply bg-neutral font-serif overflow-y-scroll;
+}
+
+a {
+  &:any-link {
+    @apply underline;
+  }
+  &:hover {
+    @apply no-underline;
+  }
+  &:visited {
+    @apply text-secondary;
+  }
+}
+
+h1 {
+  @apply font-handwriting text-giga text-secondary;
+
+  @screen md {
+    @apply text-mega;
+  }
+}
+h2 {
+  @apply font-title text-alpha uppercase;
+}
+h3 {
+  @apply text-delta text-complementary;
+}
+h4 {
+  @apply font-bold text-epsilon;
+}
+
+/* Components. */
+@tailwind components;
+
+#menu-toggle:checked + div {
+  display: block;
+}
+
+.c-card {
+  @apply bg-white border p-md shadow;
+
+  & > * + * {
+    @apply mt-md;
+  }
+}
+.c-card__image {
+  @apply border mx-auto rounded-full shadow;
+}
+
+.c-gallery {
+  @apply grid px-md;
+  gap: theme('spacing.md');
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-rows: 200px;
+  grid-auto-flow: dense;
+
+  align-items: center;
+  justify-items: center;
+}
+.c-gallery__item {
+  @apply object-contain h-full w-full;
+}
+.c-gallery__item--wide {
+  grid-column: span 2;
+}
+.c-gallery__item--tall {
+  grid-row: span 2;
+}
+
+.c-hero {
+  @apply bg-left-top bg-no-repeat bg-primary px-md py-lg text-right;
+
+  background-image: url('~wedding/images/bg.jpg?name=[path]hero.[contenthash:8].[ext]');
+  outline-color: var(--color-neutral);
+  outline-offset: -.75rem; /* Match theme('spacing.3') */
+  outline-width: theme('spacing.px');
+  outline-style: solid;
+
+  @screen md {
+    & {
+      @apply text-center;
+    }
+  }
+  @screen xl {
+    & {
+      @apply py-xl;
+    }
+  }
+}
+
+.c-hero__subtitle {
+  @apply font-typewriter mt-md uppercase;
+}
+
+.c-menu {
+  @apply bg-white shadow text-secondary font-typewriter;
+}
+.c-menu__link:any-link {
+  @apply border-b-2 border-transparent no-underline;
+
+  &:hover {
+    @apply border-secondary;
+  }
+}
+.c-menu__link--active:any-link {
+  @apply border-secondary;
+
+  &:hover {
+    @apply border-transparent;
+  }
+}
+
+.c-post {
+  @apply grid py-md;
+  grid-template-columns:
+    minmax(theme('spacing.md'), 1fr)
+    minmax(auto, 57ch)
+    minmax(theme('spacing.md'), 1fr);
+
+  & > * {
+    grid-column: 2;
+  }
+
+  & > * + * {
+    @apply mt-md;
+  }
+}
+.c-post__content--full-width {
+  grid-column: 1 / 4;
+}
+
+/* Utilities. */
+@tailwind utilities;
+@tailwind screens;
