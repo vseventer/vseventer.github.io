@@ -6,12 +6,15 @@
   "globals": {
     "__webpack_public_path__": "readonly",
     "process": "readonly",
-    "settings": "readonly"
+    "project": "readonly"
   },
   "rules": {
     "camelcase": ["error", {
       "allow": ["__webpack_public_path__"]
     }],
     "no-console": "error"
+  },
+  "settings": {
+    "import/resolver": "eslint-import-resolver-webpack"
   }
 }

@@ -19,7 +19,7 @@ import {
 
 // Local modules.
 import { config } from './package.json';
-import settings from './src/_data/settings.json';
+import project from './src/_data/project';
 
 // Constants.
 const INPUT_DIRECTORY = resolvePath(__dirname, config.input);
@@ -169,7 +169,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new DefinePlugin({ settings: JSON.stringify(settings) }),
+    new DefinePlugin({ project: JSON.stringify(project) }),
     new EnvironmentPlugin({ WEBPACK_DEV_SERVER: false }),
     new ImageminPlugin({
       disable: !PRODUCTION,
@@ -183,16 +183,14 @@ module.exports = {
       test: '**/*.{gif,jpeg,jpg,png,svg}'
     })
   ],
+  optimization: {
+    // spawn-loader is not compatible with module concatenation.
+    concatenateModules: false
+  },
   resolve: {
     modules: [INPUT_DIRECTORY, NODE_MODULE_DIRECTORY]
   },
   devServer: {
     ...STAGING && { host: '0.0.0.0' }
-  },
-  stats: {
-    children: false,
-    entrypoints: false,
-    hash: false,
-    modules: false
   }
 };

@@ -1,13 +1,13 @@
 {%- import "utils.njk" as utils -%}
-{% set T = i18n[settings.language] %}
+{% set T = i18n[project.language] %}
 
 <!doctype html>
-<html lang="{{- settings.language -}}">
+<html lang="{{- project.language -}}">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <title>{{- title }} • {{ settings.title -}}</title>
+    <title>{{- title }} • {{ project.title -}}</title>
 
     <meta name="HandheldFriendly" content="true" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -38,6 +38,8 @@
 
     {% block head %}
       {# Any custom heading code can be inserted here. #}
+
+      <link rel="preload" href="~@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2" as="font" />
     {% endblock %}
   </head>
   <body>
@@ -60,5 +62,10 @@
 
       <script src="~scripts/main.js" async></script>
     {% endblock %}
+
+    {% if project.env.NODE_ENV !== "production" %}
+      {# Embed runtime in live mode. #}
+      <script src="/scripts/runtime.js" async></script>
+    {% endif %}
   </body>
 </html>
