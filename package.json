@@ -25,7 +25,7 @@
     "lint": "cross-env eslint '*.js' lib/ $npm_package_config_input --ignore-pattern $npm_package_config_input'scripts/'",
 
     "11ty": "cross-env NODE_OPTIONS=\"--require @babel/register\" eleventy --config=./eleventy.config.js --input=$npm_package_config_input --output=$npm_package_config_intermediate",
-    "webpack": "webpack --mode production -p",
+    "webpack": "webpack --mode production --output-public-path $npm_package_homepage -p",
 
     "clean": "cross-env rimraf $npm_package_config_intermediate $npm_package_config_output",
 
