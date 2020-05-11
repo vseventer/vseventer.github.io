@@ -1,8 +1,9 @@
 ---
 title: RSVP
-eleventyNavigation:
-  key: RSVP
-  order: 10
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ title }}"
+    order: 10
 ---
 ## RSVP
 

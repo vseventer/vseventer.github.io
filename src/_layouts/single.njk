@@ -42,6 +42,9 @@
         </ul>
       </section>
 
+      {% set prevPost = collections.blog | getPreviousCollectionItem(page) %}
+      {% set nextPost = collections.blog | getNextCollectionItem(page) %}
+
       {% if prevPost or nextPost %}
         <section class="c-post__section c-related text-zeta">
           {% if nextPost %}

@@ -49,17 +49,6 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addFilter('markdown', (value) => markdownRenderer.render(`${value}`));
   eleventyConfig.setLibrary('md', markdownRenderer);
 
-  // Add previous and next post references to blog collection.
-  // @see https://brycewray.com/posts/2019/12/previous-next-eleventy/
-  eleventyConfig.addCollection('blog', (collection) => {
-    const blogCollection = collection.getFilteredByTag('blog');
-    return blogCollection.map((page, index) => {
-      page.data.prevPost = blogCollection[index - 1];
-      page.data.nextPost = blogCollection[index + 1];
-      return page;
-    });
-  });
-
   // Manual passthrough file copy.
   // @see https://www.11ty.io/docs/copy/
   eleventyConfig.addPassthroughCopy(joinPath(INPUT_DIRECTORY, '**/*.txt'));

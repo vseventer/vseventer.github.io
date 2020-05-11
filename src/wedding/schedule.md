@@ -1,8 +1,9 @@
 ---
 title: Schedule
-eleventyNavigation:
-  key: Schedule
-  order: 20
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ title }}"
+    order: 20
 ---
 ## Schedule
 

@@ -1,8 +1,9 @@
 ---
 title: Bridal Party
-eleventyNavigation:
-  key: Bridal Party
-  order: 40
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ title }}"
+    order: 40
 ---
 ## Bridal Party
 <div class="c-card">

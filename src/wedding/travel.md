@@ -1,8 +1,9 @@
 ---
 title: Travel
-eleventyNavigation:
-  key: Travel
-  order: 50
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ title }}"
+    order: 50
 ---
 ## Travel
 
