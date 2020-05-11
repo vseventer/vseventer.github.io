@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.1.1 (May 10, 2020)
+* Update wedding section.
+
 ## 3.1.0 (May 10, 2020)
 * Add blog post.
 * Redesign wedding section.
