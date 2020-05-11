@@ -49,6 +49,16 @@ Peter is Mark's older brother. Mark often reminisces about them 'roaming' the ne
 
 <div class="c-card">
 
+### Arno
+
+<img alt="Arno" class="c-card__image" loading="lazy" src="~wedding/images/arno.jpeg?name=wedding/{{ page.fileSlug }}/arno.[contenthash:8].jpg&size=142" width="144" height="144" />
+
+Arno is Mark's former boss, turned friend. He played an important part in advancing his career and connecting him with his first internship in the U.S. Their mutual interest in travel and technology has kept them in touch over the years.
+
+</div>
+
+<div class="c-card">
+
 ### Andi
 
 <img alt="Andi" class="c-card__image" loading="lazy" src="~wedding/images/andi.jpg?name=wedding/{{ page.fileSlug }}/andi.[contenthash:8].jpg&size=142" width="144" height="144" />
