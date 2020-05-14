@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.1.2 (May 13, 2020)
+* Update wedding section.
+
 ## 3.1.1 (May 10, 2020)
 * Update wedding section.
 
