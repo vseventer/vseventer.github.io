@@ -1,10 +1,5 @@
 // Standard lib.
-import {
-  dirname,
-  relative as relativePath,
-  resolve as resolvePath
-} from 'path';
-import { parse as parseUrl } from 'url';
+import { resolve as resolvePath } from 'path';
 
 // Package modules.
 import globby from 'globby';
@@ -24,7 +19,7 @@ import project from './src/_data/project';
 // Constants.
 const INPUT_DIRECTORY = resolvePath(__dirname, config.input);
 const INTERMEDIATE_DIRECTORY = resolvePath(__dirname, config.intermediate);
-const NODE_MODULE_DIRECTORY = resolvePath(__dirname, 'node_modules');
+const NODE_MODULES_DIRECTORY = resolvePath(__dirname, 'node_modules');
 const OUTPUT_DIRECTORY = resolvePath(__dirname, config.output);
 const PRODUCTION = process.env.NODE_ENV === 'production';
 const STAGING = process.env.NODE_ENV === 'staging';
@@ -113,22 +108,21 @@ module.exports = {
       },
       {
         test: /\.js$/i,
-        exclude: NODE_MODULE_DIRECTORY,
+        exclude: NODE_MODULES_DIRECTORY,
+        issuer: /\.html$/i,
+        use: {
+          loader: 'spawn-loader',
+          options: {
+            name: generateName(
+              PRODUCTION ? '[path][name].[contenthash:8].[ext]' : '[path][name].[ext]'
+            )
+          }
+        }
+      },
+      {
+        test: /\.js$/i,
+        exclude: NODE_MODULES_DIRECTORY,
         use: [
-          {
-            loader: 'spawn-loader',
-            options: {
-              // @see https://webpack.js.org/configuration/output/#outputfilename
-              name: (chunkData) => {
-                const { resource } = chunkData.chunk.entryModule;
-                const path = dirname(relativePath(INPUT_DIRECTORY, resource));
-                return generateName(
-                  PRODUCTION ? `${path}/[name].[contenthash:8].js` : `${path}/[name].js`,
-                  'scripts/'
-                )(resource, parseUrl(resource).search);
-              }
-            }
-          },
           'babel-loader',
           'eslint-loader'
         ]
@@ -183,12 +177,8 @@ module.exports = {
       test: '**/*.{gif,jpeg,jpg,png,svg}'
     })
   ],
-  optimization: {
-    // spawn-loader is not compatible with module concatenation.
-    concatenateModules: false
-  },
   resolve: {
-    modules: [INPUT_DIRECTORY, NODE_MODULE_DIRECTORY]
+    modules: [INPUT_DIRECTORY, NODE_MODULES_DIRECTORY]
   },
   devServer: {
     ...STAGING && { host: '0.0.0.0' }

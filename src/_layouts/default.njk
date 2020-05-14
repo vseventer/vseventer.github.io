@@ -15,7 +15,7 @@
     {% block csp %}
       {# In development, relax CSP. #}
       {% set csp = "default-src 'none'; connect-src links.services.disqus.com; font-src 'self'; frame-src disqus.com c.disquscdn.com platform.twitter.com syndication.twitter.com; img-src 'self' data: c.disquscdn.com referrer.disqus.com *.twimg.com platform.twitter.com syndication.twitter.com; script-src 'self' c.disquscdn.com disqus.com vseventer.disqus.com cdn.syndication.twimg.com platform.twitter.com syndication.twitter.com 'sha256-ncj73IowkxkWqA+gh/v1bAToTGXDSC8Il7C/5HQl3fM='; style-src 'self' 'unsafe-inline' c.disquscdn.com platform.twitter.com; upgrade-insecure-requests" %}
-      {% if env.env === 'development' %}
+      {% if project.env.NODE_ENV !== 'production' %}
         {% set csp = "default-src 'none'; connect-src 'self'; font-src 'self'; frame-src platform.twitter.com syndication.twitter.com; img-src 'self' data: *.twimg.com platform.twitter.com syndication.twitter.com; script-src 'self' 'unsafe-eval' 'unsafe-inline' cdn.syndication.twimg.com platform.twitter.com syndication.twitter.com; style-src 'self' 'unsafe-inline' platform.twitter.com; upgrade-insecure-requests" %}
       {% endif %}
 

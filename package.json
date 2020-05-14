@@ -89,7 +89,7 @@
     "responsive-loader": "^1.2",
     "rimraf": "^3",
     "sharp": "^0.25",
-    "spawn-loader": "^6",
+    "spawn-loader": "github:vseventer/spawn-loader#patch",
     "stylelint-config-recommended": "^3",
     "stylelint-no-unsupported-browser-features": "^4",
     "wait-on": "^5",
