@@ -47,12 +47,13 @@ h4 {
 .c-card {
   @apply bg-white border p-md shadow;
 
+  & img {
+    @apply border mx-auto rounded-full shadow;
+  }
+
   & > * + * {
     @apply mt-md;
   }
-}
-.c-card__image {
-  @apply border mx-auto rounded-full shadow;
 }
 
 .c-gallery {
@@ -84,6 +85,10 @@ h4 {
   outline-width: theme('spacing.px');
   outline-style: solid;
 
+  & p {
+    @apply font-typewriter mt-md uppercase;
+  }
+
   @screen md {
     & {
       @apply text-center;
@@ -94,10 +99,6 @@ h4 {
       @apply py-xl;
     }
   }
-}
-
-.c-hero__subtitle {
-  @apply font-typewriter mt-md uppercase;
 }
 
 .c-menu {

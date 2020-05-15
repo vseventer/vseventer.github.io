@@ -69,9 +69,14 @@ module.exports = (eleventyConfig) => {
   eleventyConfig.addNunjucksTag('eval', NunjucksEvalExtension.singleton);
   eleventyConfig.addNunjucksTag('link', NunjucksLinkExtension.singleton);
 
-  // Add shortcode.
+  // Add shortcodes.
   // @see https://www.11ty.io/docs/languages/nunjucks/#asynchronous-shortcodes
-  eleventyConfig.addNunjucksAsyncShortcode('tweet', async (id) => {
+  eleventyConfig.addPairedShortcode('box', (content, className) => `
+<div class="${className}">
+${content}
+</div>
+`);
+  eleventyConfig.addAsyncShortcode('tweet', async (id) => {
     const res = await fetch(`https://api.twitter.com/1/statuses/oembed.json?id=${id}&omit_script=true`);
     const { html } = await res.json();
     return html;
