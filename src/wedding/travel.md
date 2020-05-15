@@ -31,5 +31,6 @@ The city is known as the Food Capital of France, so eat your hearts out! Lyon is
 {% box "c-card" %}
 ### Drive
 From **Amsterdam**, it is about a 8 hours' drive to Chateau de Varennes.
+
 On the way, pass through Belgium, Luxembourg, before driving along the vineyards of Burgundy. Make a stop in Dijon, do a wine tasting or two, before arriving at the venue.
 {% endbox %}
