@@ -37,7 +37,7 @@ A few months later, they set out on an around the world adventure. They are prou
 {% box "c-card" %}
 ### The Proposal
 
-![Our Story](~wedding/images/IMG_0045-square.JPG?{format:"jpg",name:"wedding/proposal.[contenthash:8].jpg",size:142})
+![The Proposal](~wedding/images/IMG_0045-square.JPG?{format:"jpg",name:"wedding/proposal.[contenthash:8].jpg",size:142})
 
 Herta had always wanted to visit Lapland in winter, and little did she know Mark and Santa were on the same page this year. In the midst of the freezing, beautiful white snow and sparkling igloos,  Mark finally proposed. By some miracle Herta didn’t drop the ring in the snow and they happily returned to their hotel celebrating the proper way- with champagne, chocolate, and stinky cheese.
 
