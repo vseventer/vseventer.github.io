@@ -1,5 +1,23 @@
 # Changelog
 
+## 2.1.1 (April 8, 2020)
+* Update wedding section.
+
+## 2.1.0 (February 2, 2020)
+* Add wedding section.
+* Simplify previous and next post references.
+
+## 2.0.2 (December 23, 2019)
+* Add blog post.
+* Increase pagination to 5 items per page.
+
+## 2.0.1 (December 22, 2019)
+* CSP: Use correct whitelist in production.
+* Fix incorrect URL in social sharers.
+
+## 2.0.0 (December 22, 2019)
+* Refactor to use [eleventy-parcel-boilerplate](https://github.com/vseventer/eleventy-parcel-boilerplate).
+
 ## 1.0.2 (June 16, 2019)
 * Add blog post.
 * CSP: Whitelist Twitter embed scripts.

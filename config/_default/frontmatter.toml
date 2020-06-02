@@ -1,2 +1,0 @@
-# http://gohugo.io/getting-started/configuration/#configure-front-matter
-date = [ ":filename", ":default" ]

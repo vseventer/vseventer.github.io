@@ -1,0 +1,11 @@
+{% if pages %}
+  <div class="s-container s-container--padded">
+    {% for page in pages %}
+      <div class="u-spacer u-border-bottom">
+       {% include "summary.njk" %}
+      </div>
+    {% endfor %}
+
+    {% include "pagination.njk" %}
+  </div>
+{% endif %}
