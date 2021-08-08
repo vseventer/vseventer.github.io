@@ -7,6 +7,7 @@ eleventyNavigation:
 ## Chateau de Varennes
 2 Rue de Bourgogne
 71270 Varennes sur le Doubs
+[Google Maps](https://goo.gl/maps/fuL5nbYstH9qEy5WA)
 <!-- excerpt -->
 
 <div class="c-post__content--full-width c-gallery">
