@@ -18,7 +18,26 @@ Check-in
 {% box "c-card" %}
 ### Tuesday 7 September 2021
 
-_Details to be revealed soon_
+#### 9am
+Buffet Breakfast
+
+#### 4pm
+Ceremony
+
+#### 5pm
+Cocktail Hour
+
+#### 7pm
+Speeches (1)
+
+#### 7:30pm
+Dinner
+
+#### 10pm
+Speeches (2)
+
+#### 10:30pm
+First Dance and Party
 {% endbox %}
 
 {% box "c-card" %}
