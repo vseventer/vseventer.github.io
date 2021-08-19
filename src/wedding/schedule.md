@@ -21,20 +21,20 @@ Check-in
 #### 9am
 Buffet Breakfast
 
+#### 12pm
+Light Lunch
+
 #### 4pm
 Ceremony
 
 #### 5pm
 Cocktail Hour
 
-#### 7pm
-Speeches (1)
-
 #### 7:30pm
-Dinner
+Speech and Dinner
 
 #### 10pm
-Speeches (2)
+Cake Cutting
 
 #### 10:30pm
 First Dance and Party
