@@ -54,5 +54,13 @@ Arno is Mark's former boss, turned friend. He played an important part in connec
 
 ![Enri](~wedding/images/enri.jpeg?{name:"wedding/{{ page.fileSlug }}/enri.[contenthash:8].jpg",size:142})
 
-Enri and Mark met through Herta. Enri is the kinda guy you can always count on, no matter what the problem is, he’ll engineer a solution for you.
+Enri is the kinda guy you can always count on, no matter what the problem is, he’ll engineer a solution for you.
+{% endbox %}
+
+{% box "c-card" %}
+### Andi
+
+![Andi](~wedding/images/andi.jpg?{name:"wedding/{{ page.fileSlug }}/andi.[contenthash:8].jpg",size:142})
+
+Andi and Mark met through Herta. Voted most likeable jokester, he's been promoted to wedding liaison.
 {% endbox %}
