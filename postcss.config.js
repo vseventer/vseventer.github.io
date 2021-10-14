@@ -26,54 +26,51 @@ const INTERMEDIATE_DIRECTORY = config.intermediate;
 //   'html', 'md', '11ty.js', 'liquid', 'njk', 'hbs', 'mustache', 'ejs', 'haml', 'pug', 'jstl'
 // ];
 
+// Runtime constants.
+const PRODUCTION = process.env.NODE_ENV === 'production';
+
+// Build list of plugins.
+const plugins = [
+  atImport({
+    plugins: [
+      // @see https://stylelint.io/user-guide/usage/postcss-plugin
+      stylelint(),
+
+      // Rebase asset URLs to work after inlining imported file.
+      // @see https://github.com/postcss/postcss-import/blob/master/README.md
+      url({ /* assetsPath: file.dirname */ })
+    ]
+  }),
+  tailwind(),
+  presetEnv({
+    // Use stage 3 features + CSS nesting rules.
+    features: { 'nesting-rules': true },
+    preserve: !PRODUCTION,
+    stage: 3
+  }),
+
+  // Production plugins.
+  ...PRODUCTION ? [
+    purgecss({
+      // Purge using full output (more precise, but slow).
+      content: [joinPath(INTERMEDIATE_DIRECTORY, '**/*.html')],
+
+      // Purge using templates (fast, but lots of false negatives).
+      // content: [join(INPUT_DIRECTORY, `**/*.{${ELEVENTY_TEMPLATE_LANGUAGES}}`)],
+
+      // Match all of the non-standard characters Tailwind uses by default.
+      // @see https://tailwindcss.com/docs/controlling-file-size/#understanding-the-regex
+      defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
+
+      fontFace: true,
+      keyframes: true,
+      variables: true
+    }),
+    cssnano()
+  ] : [],
+
+  reporter({ clearReportedMessages: true })
+];
+
 // Exports.
-module.exports = ({ file, env }) => {
-  // Runtime constants.
-  const PRODUCTION = env === 'production';
-
-  // Build list of plugins.
-  const plugins = [
-    atImport({
-      plugins: [
-        // @see https://stylelint.io/user-guide/usage/postcss-plugin
-        stylelint(),
-
-        // Rebase asset URLs to work after inlining imported file.
-        // @see https://github.com/postcss/postcss-import/blob/master/README.md
-        url({ assetsPath: file.dirname })
-      ]
-    }),
-    tailwind(),
-    presetEnv({
-      // Use stage 3 features + CSS nesting rules.
-      features: { 'nesting-rules': true },
-      preserve: !PRODUCTION,
-      stage: 3
-    }),
-
-    // Production plugins.
-    ...PRODUCTION ? [
-      purgecss({
-        // Purge using full output (more precise, but slow).
-        content: [joinPath(INTERMEDIATE_DIRECTORY, '**/*.html')],
-
-        // Purge using templates (fast, but lots of false negatives).
-        // content: [joinPath(INPUT_DIRECTORY, `**/*.{${ELEVENTY_TEMPLATE_LANGUAGES}}`)],
-
-        // Match all of the non-standard characters Tailwind uses by default.
-        // @see https://tailwindcss.com/docs/controlling-file-size/#understanding-the-regex
-        defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
-
-        fontFace: true,
-        keyframes: true,
-        variables: true
-      }),
-      cssnano()
-    ] : [],
-
-    reporter({ clearReportedMessages: true })
-  ];
-
-  // Return the configuration.
-  return { plugins };
-};
+export default { plugins };

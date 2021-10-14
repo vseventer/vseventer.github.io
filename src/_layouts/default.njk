@@ -27,7 +27,7 @@
     {% endif %}
 
     {% block styles %}
-      <link rel="stylesheet" href="~styles/main.css" />
+      <link rel="stylesheet" href="/src/styles/main.css" />
 
       {# Any additional styles can be inserted here. #}
     {% endblock %}
@@ -39,7 +39,7 @@
     {% block head %}
       {# Any custom heading code can be inserted here. #}
 
-      <link rel="preload" href="~@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2" as="font" crossorigin="anonymous" />
+      <link rel="preload" href="~/@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2" as="font" crossorigin="anonymous" />
     {% endblock %}
   </head>
   <body>
@@ -60,12 +60,7 @@
     {% block scripts %}
       {# Any additional scripts can be inserted here. #}
 
-      <script src="~scripts/main.js" async></script>
+      <script src="/src/scripts/main.js" type="module" async></script>
     {% endblock %}
-
-    {% if project.env.NODE_ENV !== "production" %}
-      {# Embed runtime in live mode. #}
-      <script src="/scripts/runtime.js" async></script>
-    {% endif %}
   </body>
 </html>

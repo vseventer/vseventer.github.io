@@ -16,7 +16,7 @@
       <section class="c-post__section c-post__section--mt c-share">
         <ul class="c-share__list">
           <li>
-            <a class="c-share__label c-share__twitter" href="https://twitter.com/intent/tweet?url={{- page.url | url | parseUrl | urlencode -}}&text={{- title | urlencode -}}&hashtags={{- page.data.tags | urlencode -}}">
+            <a class="c-share__label c-share__twitter" href="https://twitter.com/intent/tweet?url={{- page.url | url | parseUrl | urlencode -}}&amp;text={{- title | urlencode -}}&amp;hashtags={{- page.data.tags | urlencode -}}">
               <i class="fab fa-twitter"></i>&nbsp;
               <span>{{ T.social__twitter }}</span>
             </a>
@@ -28,13 +28,13 @@
             </a>
           </li>
           <li>
-            <a class="c-share__label c-share__linkedIn" href="https://www.linkedin.com/shareArticle?mini=true&url={{- page.url | url | parseUrl | urlencode -}}&title={{- title | urlencode -}}&source={{- project.title | urlencode -}}">
+            <a class="c-share__label c-share__linkedIn" href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{- page.url | url | parseUrl | urlencode -}}&amp;title={{- title | urlencode -}}&amp;source={{- project.title | urlencode -}}">
               <i class="fab fa-linkedin"></i>&nbsp;
               <span>{{ T.social__linkedin }}</span>
             </a>
           </li>
           <li>
-            <a class="c-share__label c-share__email" href="mailto:?subject={{- title | urlencode -}}&body={{- page.url | url | parseUrl | urlencode -}}">
+            <a class="c-share__label c-share__email" href="mailto:?subject={{- title | urlencode -}}&amp;body={{- page.url | url | parseUrl | urlencode -}}">
               <i class="far fa-envelope"></i>&nbsp;
               <span>{{ T.social__email }}</span>
             </a>

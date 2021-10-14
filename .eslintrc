@@ -1,7 +1,6 @@
 {
   "root": true,
   "extends": "airbnb-base",
-  "parser": "babel-eslint",
   "rules": {
     "comma-dangle": ["error", "never"],
     "no-param-reassign": ["error", { "props": false }]
