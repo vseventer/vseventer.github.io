@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.0.0 (October 14, 2021)
+* Refactor to use Vite over Parcel and/or Webpack.
+* Update dependencies.
+
 ## 3.1.2 (May 13, 2020)
 * Update wedding section.
 
