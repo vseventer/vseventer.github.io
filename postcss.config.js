@@ -4,7 +4,6 @@
 import { join as joinPath } from 'path';
 
 // Package modules.
-import cssnano from 'cssnano';
 import atImport from 'postcss-import';
 import presetEnv from 'postcss-preset-env';
 import purgecss from '@fullhuman/postcss-purgecss';
@@ -65,8 +64,7 @@ const plugins = [
       fontFace: true,
       keyframes: true,
       variables: true
-    }),
-    cssnano()
+    })
   ] : [],
 
   reporter({ clearReportedMessages: true })
