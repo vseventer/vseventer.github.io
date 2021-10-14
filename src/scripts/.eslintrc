@@ -4,7 +4,8 @@
     "node": false
   },
   "globals": {
-    "process": "readonly"
+    "process": "readonly",
+    "project": "readonly"
   },
   "rules": {
     "no-console": "error"
