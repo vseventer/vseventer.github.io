@@ -22,24 +22,31 @@
     "output": "public/"
   },
   "scripts": {
-    "lint": "",
+    "lint": "cross-env eslint '*.js' lib/ $npm_package_config_input --ignore-pattern $npm_package_config_input'scripts/'",
+
     "11ty": "cross-env node -r esbuild-register ./node_modules/.bin/eleventy --config=./eleventy.config.js --input=$npm_package_config_input --output=$npm_package_config_intermediate",
-    "vite": "cross-env node -r esbuild-register ./node_modules/.bin/vite build",
+    "vite": "node -r esbuild-register ./node_modules/.bin/vite build",
+
     "clean": "cross-env rimraf $npm_package_config_intermediate $npm_package_config_output",
+
     "watch:11ty": "run-s '11ty -- --watch'",
     "prewatch:vite": "cross-env wait-on $npm_package_config_intermediate",
-    "watch:vite": "cross-env node -r esbuild-register ./node_modules/.bin/vite -d",
+    "watch:vite": "node -r esbuild-register ./node_modules/.bin/vite -d",
     "prewatch": "run-s clean lint",
     "watch": "run-p watch:*",
+
     "prebuild": "run-s lint",
     "build": "NODE_ENV=production run-s 11ty vite",
+
     "worktree:add": "cross-env git worktree add -B master $npm_package_config_output origin/master",
     "worktree:clean": "cd $npm_package_config_output && git rm -r .",
     "worktree:prune": "cross-env git worktree remove $npm_package_config_output",
     "worktree:push": "cd $npm_package_config_output && git add -A . && git commit --allow-empty && git push -u origin",
+
     "predeploy": "run-s clean worktree:add worktree:clean",
     "deploy": "run-s build worktree:push",
     "postdeploy": "run-s worktree:prune",
+
     "start": "run-s watch"
   },
   "dependencies": {
@@ -68,9 +75,9 @@
     "cross-env": "^7",
     "esbuild": "^0.13",
     "esbuild-register": "^3",
-    "eslint": "^6.8",
+    "eslint": "^8",
     "eslint-config-airbnb-base": "^14.2",
-    "eslint-plugin-import": "^2.24",
+    "eslint-plugin-import": "^2.25",
     "npm-run-all": "^4.1",
     "rimraf": "^3",
     "sharp": "^0.25",

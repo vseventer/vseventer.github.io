@@ -1,7 +1,7 @@
 // Standard lib.
 import {
   extname,
-  resolve,
+  resolve
 } from 'path';
 
 // Package modules.
@@ -17,7 +17,7 @@ const OUTPUT_DIRECTORY = resolve(__dirname, config.output);
 
 // Output map.
 const ASSET_MAP = {
-  'css': 'styles',
+  css: 'styles'
 };
 
 // Helpers.
@@ -57,8 +57,8 @@ module.exports = async () => {
     resolve: {
       alias: {
         '/src': INPUT_DIRECTORY,
-        '/~': resolve(__dirname, 'node_modules/'),
+        '/~': resolve(__dirname, 'node_modules/')
       }
-    },
+    }
   };
 };

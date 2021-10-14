@@ -87,9 +87,9 @@ ${content}
   });
 
   if (PRODUCTION) {
-    eleventyConfig.addTransform('HTMLMinifier', async (content, outputPath) => {
-      if(outputPath && outputPath.endsWith('.html')) {
-        return await minify(content, {
+    eleventyConfig.addTransform('HTMLMinifier', (content, outputPath) => {
+      if (outputPath && outputPath.endsWith('.html')) {
+        return minify(content, {
           collapseBooleanAttributes: true,
           collapseWhitespace: true,
           conservativeCollapse: true,
@@ -102,7 +102,7 @@ ${content}
           removeComments: true,
           removeScriptTypeAttributes: true,
           removeStyleLinkTypeAttributes: true,
-          useShortDoctype: true,
+          useShortDoctype: true
         });
       }
 

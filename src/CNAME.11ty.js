@@ -22,7 +22,7 @@ module.exports = class CNameRecord {
   data = {
     permalink: PRODUCTION && CNAME_FILE, // Enable only in production.
     permalinkBypassOutputDir: true
-  }
+  };
 
   constructor() {
     // Extract hostname from homepage.
