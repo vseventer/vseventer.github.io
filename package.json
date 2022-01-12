@@ -50,7 +50,7 @@
     "globby": "^11",
     "html-minifier-terser": "^6",
     "imagemin-mozjpeg": "^9",
-    "markdown-it": "^10",
+    "markdown-it": "^12",
     "markdown-it-footnote": "^3",
     "node-fetch": "^3",
     "postcss-import": "^14",
