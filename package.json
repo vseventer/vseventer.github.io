@@ -76,7 +76,7 @@
     "sharp": "^0.25",
     "stylelint-config-recommended": "^5",
     "stylelint-no-unsupported-browser-features": "^5",
-    "vite": "^2.6",
+    "vite": "^2.9",
     "wait-on": "^6"
   },
   "engines": {
