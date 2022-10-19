@@ -1,0 +1,81 @@
+---
+// Package modules.
+import { getImage } from '@astrojs/image';
+import { Image } from '@astrojs/image/components';
+
+// Local modules.
+import { config } from '../styles/Global';
+
+// Constants.
+const GITHUB_SRC = '/images/211904_social_github_icon.png';
+const LINKEDIN_SRC = '/images/211910_social_linkedin_icon.png';
+const TWITTER_SRC = '/images/211920_twitter_social_icon.png';
+
+// Generate retina.
+const githubProps = await getImage({ src: GITHUB_SRC, width: 32, height: 32 });
+const { src: github2x } = await getImage({ src: GITHUB_SRC, width: 64, height: 64 });
+const linkedinProps = await getImage({ src: LINKEDIN_SRC, width: 32, height: 32 });
+const { src: linkedin2x } = await getImage({ src: LINKEDIN_SRC, width: 64, height: 64 });
+const twitterProps = await getImage({ src: TWITTER_SRC, width: 32, height: 32 });
+const { src: twitter2x } = await getImage({ src: TWITTER_SRC, width: 64, height: 64 });
+---
+
+<ul>
+  <li>
+    <a href="https://github.com/vseventer">
+      <Image
+        { ...githubProps }
+        alt="GitHub"
+        srcset={`${githubProps.src} 1x, ${github2x} 2x`}
+      />
+    </a>
+  </li>
+  <li>
+    <a href="https://linkedin.com/in/markvanseventer">
+      <Image
+        { ...linkedinProps }
+        alt="LinkedIn"
+        srcset={`${linkedinProps.src} 1x, ${linkedin2x} 2x`}
+      />
+    </a>
+  </li>
+  <li>
+    <a href="https://twitter.com/vseventer">
+      <Image
+        { ...twitterProps }
+        alt="Twitter"
+        srcset={`${twitterProps.src} 1x, ${twitter2x} 2x`}
+      />
+    </a>
+  </li>
+</ul>
+
+<style define:vars={{
+  ...config.theme.color,
+  padding: config.theme.space.sm,
+  spacing: config.theme.space.md,
+}}>
+	ul {
+		display: flex;
+    flex-wrap: wrap;
+		gap: var(--spacing);
+		justify-content: center;
+	}
+
+  li {
+    flex-shrink: 0;
+  }
+
+	a {
+		display: block;
+
+		border-radius: var(--padding);
+		padding: var(--padding);
+
+		background-color: hsla(var(--primary));
+	}
+
+	a:hover {
+		transform: translateY(-2px);
+	}
+</style>

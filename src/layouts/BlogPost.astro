@@ -1,0 +1,72 @@
+---
+// Package modules.
+import { Picture } from '@astrojs/image/components';
+
+// Local modules.
+import Page from './Page.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Center from '../components/Center';
+import Container from '../components/Container';
+import Footer from '../components/Footer.astro';
+import Stack from '../components/Stack';
+import Title from '../components/Title';
+import { config } from '../styles/Global';
+import { createTheme } from '@stitches/react';
+
+// Configure.
+const {
+	frontmatter: { title, description, pubDate, image: imageSrc },
+} = Astro.props;
+const humanDate = new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' })
+  .format(new Date(pubDate));
+
+// Import image from assets (seems to be required for imports to work).
+const image = imageSrc ? (await import(imageSrc)).default : null;
+---
+
+<Page
+	description={description}
+	title={title}
+>
+	<main class={Container({ variant: 'small' })}>
+		<article class={Stack()}>
+			<header class={Stack()}>
+				{image && (
+					<Picture
+						alt={title}
+						aspectRatio={`${image.width}:${image.height}`}
+						src={image.src}
+						widths={[640,1280]}
+					/>
+				)}
+				<h1 class={Title({ variant: 'h1' })}>{title}</h1>
+				{pubDate && <p><em><time datetime={pubDate}>{humanDate}</time></em></p>}
+			</header>
+			<hr/>
+			<section class:list={[Center(),Stack()].join(' ')}>
+				<slot />
+			</section>
+		</article>
+	</main>
+</Page>
+
+<style define:vars={{
+	...config.theme.color,
+	padding: config.theme.space.sm,
+	spacing: config.theme.space.md,
+}}>
+	article {
+		border-radius: var(--padding);
+		padding: var(--spacing);
+
+		background-color: hsla(var(--secondary) / 0.75);
+	}
+
+	header {
+		text-align: center;
+	}
+
+	section {
+		max-width: 70ch;
+	}
+</style>

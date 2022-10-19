@@ -1,0 +1,59 @@
+---
+// Local modules.
+import Center from '../components/Center';
+import Container from '../components/Container';
+import Social from '../components/Social.astro';
+import Title from '../components/Title';
+import PageLayout from '../layouts/Page.astro';
+import Posts from '../components/Posts.astro';
+import Profile from '../components/Profile.astro';
+import { config } from '../styles/Global';
+import { getStaticPaths as getBlogPosts } from './[blog].astro';
+
+// Configure.
+const posts = (await getBlogPosts()).map(post => post.props.frontmatter);
+---
+<PageLayout>
+	<main class={Container({ variant: 'small' })}>
+		<section class="profile">
+			<Profile />
+		</section>
+
+		{
+			posts.length > 0 ? (
+				<section class="content">
+					<Posts posts={posts} />
+				</section>
+			) : null
+		}
+	</main>
+</PageLayout>
+
+<style define:vars={{ ...config.theme.color, spacing: config.theme.space.lg }}>
+	main {
+		display: grid;
+		gap: var(--spacing);
+		grid-template-areas:
+			"hero"
+			"profile"
+			"content";
+	}
+
+	@media screen and (min-width: 640px) {
+		main {
+			grid-template-areas:
+				"profile hero"
+				"profile content";
+			grid-template-rows: 1fr auto;
+			grid-template-columns: 1fr 2fr;
+		}
+	}
+
+	.profile {
+		grid-area: profile;
+	}
+
+	.content {
+		grid-area: content;
+	}
+</style>

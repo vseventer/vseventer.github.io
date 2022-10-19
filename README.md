@@ -6,18 +6,24 @@ See the [Changelog](./CHANGELOG.md) for a list of changes.
 
 ## Installation
 1. Run `npm install` to download and install dependencies.
+2. Run `npm start` to start the development environment.
+3. Run `npm run build` to build a production-ready bundle.
 
 ## Deployment
-1. Ensure the `public/` directory is a git worktree using `git worktree add -B master public/ origin/master`.
+1. Ensure the `dist/` directory is a git worktree using `git worktree add -B master dist/ origin/master`.
 2. Run `npm version <major|minor|patch>`.
 3. Push the code changes using `git push`.
-4. Commit the build changes using `cd public/ && git commit -am 'Publishing changes.'`.
-5. Push the build changes using `cd public/ && git push`.
+4. Commit the build changes using `cd dist/ && git commit -am 'Publishing changes.'`.
+5. Push the build changes using `cd dist/ && git push`.
+
+## Credits
+* Ionicons pack - https://www.iconfinder.com/iconsets/ionicons
+* Background photo - https://unsplash.com/@asoggetti
 
 ## License
     The MIT License (MIT)
 
-    Copyright (c) 2017 Mark van Seventer
+    Copyright (c) 2022 Mark van Seventer
 
     Permission is hereby granted, free of charge, to any person obtaining a copy of
     this software and associated documentation files (the "Software"), to deal in

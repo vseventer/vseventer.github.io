@@ -1,0 +1,10 @@
+---
+// Configure.
+const { id } = Astro.props;
+
+// Fetch HTML.
+const res = await fetch(`https://api.twitter.com/1/statuses/oembed.json?id=${id}&omit_script=true`);
+const { html } = await res.json();
+---
+
+<div set:html={html} />

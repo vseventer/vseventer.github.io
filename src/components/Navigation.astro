@@ -1,0 +1,10 @@
+---
+// Local modules.
+import Container from './Container';
+import HeaderLink from './HeaderLink.astro';
+import { SITE_TITLE } from '../config';
+---
+
+<header class={Container({ variant: 'small' })}>
+	<HeaderLink href="/">{SITE_TITLE}</HeaderLink>
+</header>

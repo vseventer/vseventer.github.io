@@ -1,0 +1,48 @@
+---
+// Local modules.
+import Stack from './Stack';
+import Title from './Title';
+import { config } from '../styles/Global';
+
+// Configure.
+const { posts } = Astro.props;
+---
+
+<div class={Stack()}>
+  <h2 class={Title()}>Posts</h2>
+  <ol class={Stack({ variant: 'small' })}>
+    {posts.map((post) => (
+      <li>
+        <a href={`/${post.slug}`}>{post.title}</a>
+        <time datetime={post.pubDate}>
+          {
+            new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' })
+              .format(new Date(post.pubDate))
+          }
+        </time>
+      </li>
+    ))}
+  </ol>
+</div>
+
+<style define:vars={{
+  ...config.theme.color,
+  padding: config.theme.space.sm,
+  spacing: config.theme.space.md,
+}}>
+  div {
+    border-radius: var(--padding);
+    padding: var(--spacing);
+
+    background-color: hsla(var(--secondary) / 0.75);
+  }
+
+	li {
+		display: flex;
+		gap: var(--spacing);
+		justify-content: space-between;
+	}
+	li > :last-child {
+		flex-shrink: 0;
+	}
+</style>

@@ -1,0 +1,22 @@
+---
+// Local modules.
+import Container from '../components/Container';
+import { config } from '../styles/Global';
+
+// Constants.
+const THIS_YEAR = (new Date()).getFullYear();
+---
+
+<footer>
+	<p class={Container({ variant: 'small' })}>
+		© {THIS_YEAR} Mark van Seventer
+	</p>
+</footer>
+
+<style define:vars={config.theme.color}>
+	footer {
+		border-top: 1px solid hsla(var(--primary));
+
+		background-color: hsla(var(--secondary) / 0.5);
+	}
+</style>

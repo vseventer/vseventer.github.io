@@ -1,5 +1,8 @@
 # Changelog
 
+## 5.0.0
+* Rewrite using [Astro](https://astro.build/).
+
 ## 4.0.0 (October 14, 2021)
 * Refactor to use Vite over Parcel and/or Webpack.
 * Update dependencies.

@@ -1,0 +1,24 @@
+---
+// Local modules.
+import BlogPost from "../layouts/BlogPost.astro";
+
+// Exports.
+export async function getStaticPaths() {
+  const posts = (await Astro.glob('./_blog/*.{md,mdx}')).sort(
+    (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+  );
+  return posts.map(post => ({
+    params: {
+      blog: post.frontmatter.slug,
+    },
+    props: post,
+  }));
+}
+
+// Configure.
+const { Content } = Astro.props;
+---
+
+<BlogPost { ...Astro.props }>
+  <Content />
+</BlogPost>

@@ -1,0 +1,59 @@
+---
+// Package modules.
+import { Picture } from '@astrojs/image/components';
+
+// Local modules.
+import Center from './Center';
+import Social from './Social.astro';
+import Stack from './Stack';
+import Title from './Title';
+import { config } from '../styles/Global';
+
+// Assets.
+import avatar from '../images/mark-square.jpg';
+---
+
+<div class={[Center(), 'avatar'].join(' ')}>
+  <Picture
+    alt="Mark van Seventer"
+    aspectRatio={`${avatar.width}:${avatar.height}`}
+    sizes="(min-width: 640px) 25vw, 75vw"
+    src={avatar}
+    widths={[160, 320, 640]}
+  />
+</div>
+<div class={[Stack(),'headline'].join(' ')}>
+  <div class={Stack({ variant: 'small' })}>
+    <h1 class={Title({ variant: 'h2' })}>Mark van Seventer</h1>
+    <p><em>Software Engineer</em></p>
+  </div>
+  <Social />
+</div>
+
+<style define:vars={{ ...config.theme.color, padding: config.theme.space.sm }}>
+	.avatar {
+		position: relative;
+		z-index: 1;
+
+		aspect-ratio: 1 / 1;
+		width: 75%;
+	}
+	:global(.avatar img) {
+		border-radius: var(--padding);
+
+		box-shadow: var(--padding) var(--padding) var(--padding) hsla(var(--primary));
+	}
+
+	.headline {
+		transform: translateY(-50px);
+
+		margin-bottom: -50px;
+		border-radius: var(--padding);
+		padding: var(--padding);
+		padding-top: calc(50px + 2 * var(--padding));
+
+		background-color: hsla(var(--secondary) / 0.75);
+
+		text-align: center;
+	}
+</style>

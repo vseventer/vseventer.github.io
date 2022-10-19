@@ -1,0 +1,37 @@
+---
+// Local modules.
+import Container from '../components/Container';
+import HeaderLink from '../components/HeaderLink.astro';
+import PageLayout from '../layouts/Page.astro';
+import Stack from '../components/Stack';
+import Title from '../components/Title';
+import { config } from '../styles/Global';
+
+// Constants.
+const PAGE_TITLE = 'Page Not Found';
+---
+
+<PageLayout title={PAGE_TITLE}>
+  <main class:list={[Stack(), Container()].join(' ')}>
+    <h1 class={Title({ variant: 'h1' })}>Page Not Found</h1>
+    <p>Please return <HeaderLink href="/">home</HeaderLink></p>
+  </main>
+</PageLayout>
+
+<style define:vars={{
+	...config.theme.color,
+	padding: config.theme.space.sm,
+	spacing: config.theme.space.md,
+}}>
+	main {
+    place-self: center;
+
+    border-radius: var(--padding);
+		padding-top: var(--spacing);
+		padding-bottom: var(--spacing);
+
+		background-color: hsla(var(--secondary) / 0.75);
+
+    text-align: center;
+  }
+</style>

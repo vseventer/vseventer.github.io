@@ -1,0 +1,62 @@
+---
+// Local modules.
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Navigation from '../components/Navigation.astro';
+import { config } from '../styles/Global';
+
+// Assets.
+import bg from '../images/mountains.jpg';
+---
+<html lang="en">
+  <head>
+    <BaseHead {...Astro.props} />
+  </head>
+  <body>
+    <slot name="navigation">
+      <Navigation />
+    </slot>
+    <slot />
+    <slot name="footer">
+      <Footer />
+    </slot>
+    <script>
+      if (document.querySelector('.twitter-tweet')) {
+        const el = document.createElement('script');
+        el.src = '//platform.twitter.com/widgets.js';
+        el.async = true;
+        document.body.appendChild(el);
+      }
+    </script>
+  </body>
+</html>
+
+<style
+  define:vars={{ ...config.theme.color, bg: `url(${bg.src})`, spacing: config.theme.space.md }}
+  is:global
+>
+  body {
+    overflow-y: scroll;
+
+    display: grid;
+    gap: var(--spacing);
+    grid-template-rows: auto 1fr auto;
+
+		background: hsla(var(--background)) var(--bg) no-repeat center center;
+		background-size: cover;
+		background-attachment: fixed;
+
+    color: hsla(var(--foreground));
+    font-family: system-ui;
+  }
+
+  a:any-link {
+    color: hsla(var(--accent));
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  a:active, a:visited {
+    color: hsla(var(--highlight));
+  }
+</style>
