@@ -1,63 +1,106 @@
- <!doctype html> <html lang=en> <head> <meta charset=utf-8> <meta http-equiv=X-UA-Compatible content="IE=edge"> <title>
-Static Site Generators: Eleventy and webpack (Part 2) • Mark van Seventer</title> <meta name=HandheldFriendly 
-content=true> <meta name=viewport content="width=device-width,initial-scale=1"> <meta 
-http-equiv=Content-Security-Policy 
-content="default-src 'none'; connect-src links.services.disqus.com; font-src 'self'; frame-src disqus.com c.disquscdn.com platform.twitter.com syndication.twitter.com; img-src 'self' data: c.disquscdn.com referrer.disqus.com *.twimg.com platform.twitter.com syndication.twitter.com; script-src 'self' c.disquscdn.com disqus.com vseventer.disqus.com cdn.syndication.twimg.com platform.twitter.com syndication.twitter.com 'sha256-ncj73IowkxkWqA+gh/v1bAToTGXDSC8Il7C/5HQl3fM='; style-src 'self' 'unsafe-inline' c.disquscdn.com platform.twitter.com; upgrade-insecure-requests">
- <meta name=description 
-content="Previously, I wrote about moving this very blog from Hugo to Eleventy and Parcel. Now that I’ve had a few months to experiment, I have decided to move away from Parcel and go with good ol’ webpack instead.">
- <link rel=canonical href=https://www.vseventer.com/static-site-generators-eleventy-and-webpack-part-2/ > <script async 
-type=module crossorigin src=/scripts/main.1e958772.js></script> <link rel=stylesheet href=/styles/main.c9cf2d55.css> 
-</head> <body> <nav class=c-menu> <div class="container md:max-w-screen-sm"> <ul class=c-menu__list> <li 
-class=menu-home> <a class=c-menu__link href=/ >Home</a> </li> <li class="flex-grow text-right menu-github"> <a 
-class=c-menu__link href=https://github.com/vseventer> <i class="fab fa-lg fa-github"></i> <span class=sr-only>GitHub
-</span> </a> </li> <li class=menu-linkedin> <a class=c-menu__link href=https://www.linkedin.com/in/markvanseventer/ > <i
- class="fab fa-lg fa-linkedin"></i> <span class=sr-only>LinkedIn</span> </a> </li> <li class=menu-twitter> <a 
-class=c-menu__link href=https://twitter.com/vseventer> <i class="fab fa-lg fa-twitter"></i> <span class=sr-only>Twitter
-</span> </a> </li> </ul> </div> </nav> <article class=c-post> <header class=c-hero> <h1 class=c-hero__title>
-Static Site Generators: Eleventy and webpack (Part 2)</h1> <p class=c-hero__subtitle> <time datetime=2020-05-09>
-9 May 2020</time> </p> </header> <div class="container md:max-w-screen-sm"> <section class=s-content> <p><a 
-href=/static-site-generators-from-hugo-to-eleventy-and-parcel/ >Previously</a>
-, I wrote about moving this very blog from Hugo to Eleventy and Parcel. Now that I’ve had a few months to experiment, I have decided to move away from Parcel and go with good ol’ webpack instead.
-</p> <h2>I tried, Parcel, I tried</h2> <p><a href=https://parceljs.org/ >Parcel</a> advocates being a <cite>
-a zero configuration web application bundler</cite>
-. However, the project appears to be in limbo between versions 1 and 2, neither of which are currently working to my satisfaction. The first does not receive any feature additions anymore, yet the latest beta for version 2 dates back to November 2019.
-</p> <p>
-Parcel 1 is unusable to me given its unstable watcher which, when paired with Eleventy’s watcher, constantly breaks down. I tried relying on Parcel’s beta version but found it far from being feature-complete. I might get back on this train when Parcel 2 implements and offers:
-</p> <ul> <li>Source maps for non-JavaScript assets,</li> <li>More than just the default custom resolvers and namers,
-</li> <li>Responsive image support.</li> </ul> <p>
-Yes, I get it, I’m pretty demanding. However, as I am planning to build a couple of static websites in the near future, I want to set myself up for success, and not be irritated by my boilerplate all the time.
-</p> <h2>Getting back to webpack</h2> <p>I mentioned in <a 
-href=/static-site-generators-from-hugo-to-eleventy-and-parcel/ >part 1</a> I attempted to use <a 
-href=https://webpack.js.org/ >webpack</a>
- to process HTML files back in the day. However, contrary to Parcel, webpack does actually have a somewhat consistent release schedule. And since I first experimented with webpack, a lot has changed.
-</p> <p>
-By combining webpack’s html-, extract-, and file-loader, I was able to get things up and running pretty smoothly. I ran into some issues with webpack aliases, but nothing a 
-<a href="https://github.com/peerigon/extract-loader/pulls?q=is%3Apr+author%3Avseventer">PR or two</a>
- can’t fix. After figuring out how to spawn my JavaScript assets separately from webpack’s bundle, the foundation was all set.
-</p> <p>
-From here, adding loaders for fonts and images, plugins for optimizations, and adapting the asset build name pattern a little bit I end up with a pretty solid build system: 
-<strong><a href=https://github.com/vseventer/eleventy-webpack-boilerplate>eleventy-webpack-boilerplate</a></strong>.</p>
- <h2>The One Constant: Eleventy</h2> <p>This whole post didn’t mention <a href=https://www.11ty.dev/ >Eleventy</a>
- once. That is because, ever since I started using it, it has been nothing but bliss. Everything works as expected, is documented properly, and is dead-easy to customize by adding a module or two. And with recent additions, like its 
-<a href=https://www.11ty.dev/docs/plugins/navigation/ >Navigation Plugin</a>, things couldn’t be better.</p> <p>
-I am really looking forward to building more complex static sites with my current set-up. I am curious to see how things will work together once I am storing assets on a CDN, edit my content in 
-<a href=https://forestry.io/ >Forestry</a>, and deploy using <a href=https://www.netlify.com/ >Netlify</a> or the like.
-</p> </section> <section class="c-post__section c-post__section--mt c-share"> <ul class=c-share__list> <li> <a 
-class="c-share__label c-share__twitter" 
-href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.vseventer.com%2Fstatic-site-generators-eleventy-and-webpack-part-2%2F&text=Static%20Site%20Generators%3A%20Eleventy%20and%20webpack%20(Part%202)&hashtags=">
- <i class="fab fa-twitter"></i>  <span>Tweet</span> </a> </li> <li> <a class="c-share__label c-share__facebook" 
-href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.vseventer.com%2Fstatic-site-generators-eleventy-and-webpack-part-2%2F">
- <i class="fab fa-facebook"></i>  <span>Post</span> </a> </li> <li> <a class="c-share__label c-share__linkedIn" 
-href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.vseventer.com%2Fstatic-site-generators-eleventy-and-webpack-part-2%2F&title=Static%20Site%20Generators%3A%20Eleventy%20and%20webpack%20(Part%202)&source=Mark%20van%20Seventer">
- <i class="fab fa-linkedin"></i>  <span>Update</span> </a> </li> <li> <a class="c-share__label c-share__email" 
-href="mailto:?subject=Static%20Site%20Generators%3A%20Eleventy%20and%20webpack%20(Part%202)&body=https%3A%2F%2Fwww.vseventer.com%2Fstatic-site-generators-eleventy-and-webpack-part-2%2F">
- <i class="far fa-envelope"></i>  <span>E-mail</span> </a> </li> </ul> </section> <section 
-class="c-post__section c-related text-zeta"> <div class="c-related__item c-related__prev"> <p class=c-related__label>
-Previous Post:</p> <article class="c-post c-post__section"> <header> <h2 class=c-post__title> <a class=c-post__link 
-href=/static-site-generators-from-hugo-to-eleventy-and-parcel/ >Static Site Generators: from Hugo to Eleventy and Parcel
-</a> </h2> <p class=c-post__subtitle> <time datetime=2019-12-22>22 December 2019</time> </p> </header> <section 
-class="c-post__content s-content"> <p>
-For years, Hugo was my go-to static site generator. Lately, however, I have been experimenting with Eleventy and Parcel. I ended up liking this quite a bit, so much so that this blog is now officially powered by Eleventy and Parcel.
-</p> </section> </article> </div> </section> <section class=c-post__section> <div id=disqus_thread></div> <noscript>
-Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript>
- </section> </div> </article> </body> </html> 
+<!DOCTYPE html>
+<html lang="en" style="--primary: 0 0% 87%;--secondary: 220 14% 96%;--accent: 250 77% 45%;--highlight: 250 77% 70%;--foreground: 221 39% 11%;--background: 210 20% 98%;--bg: url(/assets/mountains.46d0b5a3.jpg);--spacing: 1.5rem;">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.3.1">
+
+<!-- Primary Meta Tags -->
+<title>Static Site Generators: Eleventy and webpack (Part 2) - My personal website.</title>
+<meta name="title" content="Static Site Generators: Eleventy and webpack (Part 2)">
+<meta name="description" content="My personal website.">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vseventer.com/static-site-generators-eleventy-and-webpack-part-2/">
+<meta property="og:title" content="Static Site Generators: Eleventy and webpack (Part 2)">
+<meta property="og:description" content="My personal website.">
+
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vseventer.com/static-site-generators-eleventy-and-webpack-part-2/">
+<meta property="twitter:title" content="Static Site Generators: Eleventy and webpack (Part 2)">
+<meta property="twitter:description" content="My personal website.">
+
+
+<style id="stitches">--sxs{--sxs:0 t-hKFtGg}@media{:root,.t-hKFtGg{--color-primary:0 0% 87%;--color-secondary:220 14% 96%;--color-accent:250 77% 45%;--color-highlight:250 77% 70%;--color-foreground:221 39% 11%;--color-background:210 20% 98%;--space-sm:0.75rem;--space-md:1.5rem;--space-lg:3rem}}--sxs{--sxs:2 c-idZwvW c-gwrEHo c-lppfwg c-cWxLmj}@media{.c-idZwvW{margin-left:auto;margin-right:auto}.c-gwrEHo{max-width:1024px;width:100%;padding:var(--space-md)}.c-lppfwg > * + *{margin-top:var(--space-md)}.c-cWxLmj{font-size:24px;letter-spacing:-0.019492327565219923em;line-height:1}}--sxs{--sxs:3 c-gwrEHo-xuutw-variant-small c-lppfwg-gUifyj-variant-small c-cWxLmj-khbsLQ-variant-h2 c-cWxLmj-hDjlhN-variant-h1}@media{.c-gwrEHo-xuutw-variant-small{padding:var(--space-sm)}.c-lppfwg-gUifyj-variant-small > * + *{margin-top:var(--space-sm)}.c-cWxLmj-khbsLQ-variant-h2{font-size:32px;letter-spacing:-0.02160486150154747em;line-height:1.5}.c-cWxLmj-hDjlhN-variant-h1{font-size:48px;letter-spacing:-0.022257389056751224em;line-height:1}}</style>
+
+  <link rel="stylesheet" href="/assets/404-_blog_-index.336d841a.css" />
+<link rel="stylesheet" href="/assets/_blog_-index.d4869606.css" /><style>article:where(.astro-NJ4TE7T3){border-radius:var(--padding);padding:var(--spacing);background-color:hsla(var(--secondary) / 0.75)}header:where(.astro-NJ4TE7T3){text-align:center}section:where(.astro-NJ4TE7T3){max-width:70ch}</style>
+<style>body {
+    overflow-y: scroll;
+
+    display: grid;
+    gap: var(--spacing);
+    grid-template-rows: auto 1fr auto;
+
+		background: hsla(var(--background)) var(--bg) no-repeat center center;
+		background-size: cover;
+		background-attachment: fixed;
+
+    color: hsla(var(--foreground));
+    font-family: system-ui;
+  }
+
+  a:any-link {
+    color: hsla(var(--accent));
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  a:active, a:visited {
+    color: hsla(var(--highlight));
+  }</style><script type="module">if(document.querySelector(".twitter-tweet")){const t=document.createElement("script");t.src="//platform.twitter.com/widgets.js",t.async=!0,document.body.appendChild(t)}
+</script></head>
+  <body>
+    
+      <header class="c-idZwvW c-gwrEHo c-gwrEHo-xuutw-variant-small">
+	<a href="/" class="astro-VP53IQLR">
+	vseventer.com
+</a>
+
+
+</header>
+    
+    <main class="c-idZwvW c-gwrEHo c-gwrEHo-xuutw-variant-small astro-NJ4TE7T3" style="--primary: 0 0% 87%;--secondary: 220 14% 96%;--accent: 250 77% 45%;--highlight: 250 77% 70%;--foreground: 221 39% 11%;--background: 210 20% 98%;--padding: 0.75rem;--spacing: 1.5rem;">
+		<article class="c-lppfwg astro-NJ4TE7T3">
+			<header class="c-lppfwg astro-NJ4TE7T3">
+				
+				<h1 class="c-cWxLmj c-cWxLmj-hDjlhN-variant-h1 astro-NJ4TE7T3">Static Site Generators: Eleventy and webpack (Part 2)</h1>
+				<p class="astro-NJ4TE7T3"><em class="astro-NJ4TE7T3"><time datetime="2020-05-10" class="astro-NJ4TE7T3">May 9, 2020</time></em></p>
+			</header>
+			<hr class="astro-NJ4TE7T3">
+			<section class="c-idZwvW c-lppfwg astro-NJ4TE7T3">
+				<p><a href="/static-site-generators-from-hugo-to-eleventy-and-parcel">Previously</a>, I wrote about moving this very blog from Hugo to Eleventy and Parcel. Now that I’ve had a few months to experiment, I have decided to move away from Parcel and go with good ol’ webpack instead.</p>
+<!-- excerpt -->
+<h2 id="i-tried-parcel-i-tried">I tried, Parcel, I tried</h2>
+<p><a href="https://parceljs.org/">Parcel</a> advocates being a <cite>a zero configuration web application bundler</cite>. However, the project appears to be in limbo between versions 1 and 2, neither of which are currently working to my satisfaction. The first does not receive any feature additions anymore, yet the latest beta for version 2 dates back to November 2019.</p>
+<p>Parcel 1 is unusable to me given its unstable watcher which, when paired with Eleventy’s watcher, constantly breaks down. I tried relying on Parcel’s beta version but found it far from being feature-complete. I might get back on this train when Parcel 2 implements and offers:</p>
+<ul>
+<li>Source maps for non-JavaScript assets,</li>
+<li>More than just the default custom resolvers and namers,</li>
+<li>Responsive image support.</li>
+</ul>
+<p>Yes, I get it, I’m pretty demanding. However, as I am planning to build a couple of static websites in the near future, I want to set myself up for success, and not be irritated by my boilerplate all the time.</p>
+<h2 id="getting-back-to-webpack">Getting back to webpack</h2>
+<p>I mentioned in <a href="/static-site-generators-from-hugo-to-eleventy-and-parcel">part 1</a> I attempted to use <a href="https://webpack.js.org/">webpack</a> to process HTML files back in the day. However, contrary to Parcel, webpack does actually have a somewhat consistent release schedule. And since I first experimented with webpack, a lot has changed.</p>
+<p>By combining webpack’s html-, extract-, and file-loader, I was able to get things up and running pretty smoothly. I ran into some issues with webpack aliases, but nothing a <a href="https://github.com/peerigon/extract-loader/pulls?q=is%3Apr+author%3Avseventer">PR or two</a> can’t fix. After figuring out how to spawn my JavaScript assets separately from webpack’s bundle, the foundation was all set.</p>
+<p>From here, adding loaders for fonts and images, plugins for optimizations, and adapting the asset build name pattern a little bit I end up with a pretty solid build system: <strong><a href="https://github.com/vseventer/eleventy-webpack-boilerplate">eleventy-webpack-boilerplate</a></strong>.</p>
+<h2 id="the-one-constant-eleventy">The One Constant: Eleventy</h2>
+<p>This whole post didn’t mention <a href="https://www.11ty.dev/">Eleventy</a> once. That is because, ever since I started using it, it has been nothing but bliss. Everything works as expected, is documented properly, and is dead-easy to customize by adding a module or two. And with recent additions, like its <a href="https://www.11ty.dev/docs/plugins/navigation/">Navigation Plugin</a>, things couldn’t be better.</p>
+<p>I am really looking forward to building more complex static sites with my current set-up. I am curious to see how things will work together once I am storing assets on a CDN, edit my content in <a href="https://forestry.io/">Forestry</a>, and deploy using <a href="https://www.netlify.com/">Netlify</a> or the like.</p>
+			</section>
+		</article>
+	</main>
+    
+      <footer class="astro-TLB3X56P" style="--primary: 0 0% 87%;--secondary: 220 14% 96%;--accent: 250 77% 45%;--highlight: 250 77% 70%;--foreground: 221 39% 11%;--background: 210 20% 98%;">
+	<p class="c-idZwvW c-gwrEHo c-gwrEHo-xuutw-variant-small astro-TLB3X56P">
+		© 2022 Mark van Seventer
+	</p>
+</footer>
+    
+    
+  </body>
+</html>
+

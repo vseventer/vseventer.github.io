@@ -1,36 +1,151 @@
- <!doctype html> <html lang=en> <head> <meta charset=utf-8> <meta http-equiv=X-UA-Compatible content="IE=edge"> <title>
-Mark van Seventer • Mark van Seventer</title> <meta name=HandheldFriendly content=true> <meta name=viewport 
-content="width=device-width,initial-scale=1"> <meta http-equiv=Content-Security-Policy 
-content="default-src 'none'; connect-src links.services.disqus.com; font-src 'self'; frame-src disqus.com c.disquscdn.com platform.twitter.com syndication.twitter.com; img-src 'self' data: c.disquscdn.com referrer.disqus.com *.twimg.com platform.twitter.com syndication.twitter.com; script-src 'self' c.disquscdn.com disqus.com vseventer.disqus.com cdn.syndication.twimg.com platform.twitter.com syndication.twitter.com 'sha256-ncj73IowkxkWqA+gh/v1bAToTGXDSC8Il7C/5HQl3fM='; style-src 'self' 'unsafe-inline' c.disquscdn.com platform.twitter.com; upgrade-insecure-requests">
- <link rel=canonical href=https://www.vseventer.com/ > <script async type=module crossorigin 
-src=/scripts/main.1e958772.js></script> <link rel=stylesheet href=/styles/main.c9cf2d55.css> </head> <body> <nav 
-class=c-menu> <div class="container md:max-w-screen-sm"> <ul class=c-menu__list> <li class=menu-home> <a 
-class=c-menu__link href=/ >Home</a> </li> <li class="flex-grow text-right menu-github"> <a class=c-menu__link 
-href=https://github.com/vseventer> <i class="fab fa-lg fa-github"></i> <span class=sr-only>GitHub</span> </a> </li> <li 
-class=menu-linkedin> <a class=c-menu__link href=https://www.linkedin.com/in/markvanseventer/ > <i 
-class="fab fa-lg fa-linkedin"></i> <span class=sr-only>LinkedIn</span> </a> </li> <li class=menu-twitter> <a 
-class=c-menu__link href=https://twitter.com/vseventer> <i class="fab fa-lg fa-twitter"></i> <span class=sr-only>Twitter
-</span> </a> </li> </ul> </div> </nav> <div class="c-hero c-hero--inverse"> <header class=c-hero__title> <h1>
-Mark van Seventer</h1> </header> <div class="c-hero__subtitle s-content"> <p>I’m Mark. I write JavaScript.</p> <p>
-Things I like: travel, soccer, money hoarding, and handing out unsolicited financial advice*.</p> <p>
-Dutchman, NYC-based.</p> </div> </div> <div class="container md:max-w-screen-sm"> <article 
-class="c-post c-post__section"> <header> <h2 class=c-post__title> <a class=c-post__link 
-href=/static-site-generators-eleventy-and-webpack-part-2/ >Static Site Generators: Eleventy and webpack (Part 2)</a> 
-</h2> <p class=c-post__subtitle> <time datetime=2020-05-09>9 May 2020</time> </p> </header> <section 
-class="c-post__content s-content"> <p><a href=/static-site-generators-from-hugo-to-eleventy-and-parcel/ >Previously</a>
-, I wrote about moving this very blog from Hugo to Eleventy and Parcel. Now that I’ve had a few months to experiment, I have decided to move away from Parcel and go with good ol’ webpack instead.
-</p> </section> </article> <article class="c-post c-post__section"> <header> <h2 class=c-post__title> <a 
-class=c-post__link href=/static-site-generators-from-hugo-to-eleventy-and-parcel/ >
-Static Site Generators: from Hugo to Eleventy and Parcel</a> </h2> <p class=c-post__subtitle> <time datetime=2019-12-22>
-22 December 2019</time> </p> </header> <section class="c-post__content s-content"> <p>
-For years, Hugo was my go-to static site generator. Lately, however, I have been experimenting with Eleventy and Parcel. I ended up liking this quite a bit, so much so that this blog is now officially powered by Eleventy and Parcel.
-</p> </section> </article> <article class="c-post c-post__section"> <header> <h2 class=c-post__title> <a 
-class=c-post__link href=/the-state-of-health-care-in-the-us/ >The State of Health Care in the U.S.</a> </h2> <p 
-class=c-post__subtitle> <time datetime=2019-06-15>15 June 2019</time> </p> </header> <section 
-class="c-post__content s-content"> <p>
-Originally, I planned to write about promises and timeouts in JavaScript. Then, I broke my wrist playing soccer. This meant hospital visits, surgery, and finally recovery. Coincidentally, last week, I read some interesting tweets regarding the state of health care in the United States.
-</p> </section> </article> <article class="c-post c-post__section"> <header> <h2 class=c-post__title> <a 
-class=c-post__link href=/a-new-blog-what-to-expect/ >A New Blog: What to Expect?</a> </h2> <p class=c-post__subtitle> 
-<time datetime=2019-04-13>13 April 2019</time> </p> </header> <section class="c-post__content s-content"> <p>
-It has taken me a surprisingly long time to publish my first blog post. You’d say that, as an engineer, I’d be able to spin up a blogging platform in a matter of minutes. While that might be true, I am a perfectionist: I started at least ten blogs to only never finish a single one of them. Until today, that is. Welcome!
-</p> </section> </article> </div> </body> </html> 
+<!DOCTYPE html>
+<html lang="en" style="--primary: 0 0% 87%;--secondary: 220 14% 96%;--accent: 250 77% 45%;--highlight: 250 77% 70%;--foreground: 221 39% 11%;--background: 210 20% 98%;--bg: url(/assets/mountains.46d0b5a3.jpg);--spacing: 1.5rem;">
+  <head>
+    <!-- Global Metadata --><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Astro v1.3.1">
+
+<!-- Primary Meta Tags -->
+<title>vseventer.com - My personal website.</title>
+<meta name="title" content="vseventer.com">
+<meta name="description" content="My personal website.">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vseventer.com/">
+<meta property="og:title" content="vseventer.com">
+<meta property="og:description" content="My personal website.">
+
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://vseventer.com/">
+<meta property="twitter:title" content="vseventer.com">
+<meta property="twitter:description" content="My personal website.">
+
+
+<style id="stitches">--sxs{--sxs:0 t-hKFtGg}@media{:root,.t-hKFtGg{--color-primary:0 0% 87%;--color-secondary:220 14% 96%;--color-accent:250 77% 45%;--color-highlight:250 77% 70%;--color-foreground:221 39% 11%;--color-background:210 20% 98%;--space-sm:0.75rem;--space-md:1.5rem;--space-lg:3rem}}--sxs{--sxs:2 c-idZwvW c-gwrEHo c-lppfwg c-cWxLmj}@media{.c-idZwvW{margin-left:auto;margin-right:auto}.c-gwrEHo{max-width:1024px;width:100%;padding:var(--space-md)}.c-lppfwg > * + *{margin-top:var(--space-md)}.c-cWxLmj{font-size:24px;letter-spacing:-0.019492327565219923em;line-height:1}}--sxs{--sxs:3 c-gwrEHo-xuutw-variant-small c-lppfwg-gUifyj-variant-small c-cWxLmj-khbsLQ-variant-h2}@media{.c-gwrEHo-xuutw-variant-small{padding:var(--space-sm)}.c-lppfwg-gUifyj-variant-small > * + *{margin-top:var(--space-sm)}.c-cWxLmj-khbsLQ-variant-h2{font-size:32px;letter-spacing:-0.02160486150154747em;line-height:1.5}}</style>
+
+  <link rel="stylesheet" href="/assets/index.b5e2521d.css" />
+<link rel="stylesheet" href="/assets/_blog_-index.d4869606.css" />
+<link rel="stylesheet" href="/assets/404-_blog_-index.336d841a.css" /><style>main:where(.astro-BHGOHO6K){display:grid;gap:var(--spacing);grid-template-areas:"hero" "profile" "content"}@media screen and (min-width: 640px){main:where(.astro-BHGOHO6K){grid-template-areas:"profile hero" "profile content";grid-template-rows:1fr auto;grid-template-columns:1fr 2fr}}.profile:where(.astro-BHGOHO6K){grid-area:profile}.content:where(.astro-BHGOHO6K){grid-area:content}</style>
+<style>body {
+    overflow-y: scroll;
+
+    display: grid;
+    gap: var(--spacing);
+    grid-template-rows: auto 1fr auto;
+
+		background: hsla(var(--background)) var(--bg) no-repeat center center;
+		background-size: cover;
+		background-attachment: fixed;
+
+    color: hsla(var(--foreground));
+    font-family: system-ui;
+  }
+
+  a:any-link {
+    color: hsla(var(--accent));
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  a:active, a:visited {
+    color: hsla(var(--highlight));
+  }</style><script type="module">if(document.querySelector(".twitter-tweet")){const t=document.createElement("script");t.src="//platform.twitter.com/widgets.js",t.async=!0,document.body.appendChild(t)}
+</script></head>
+  <body>
+    
+      <header class="c-idZwvW c-gwrEHo c-gwrEHo-xuutw-variant-small">
+	<a href="/" class="astro-VP53IQLR">
+	vseventer.com
+</a>
+
+
+</header>
+    
+    <main class="c-idZwvW c-gwrEHo c-gwrEHo-xuutw-variant-small astro-BHGOHO6K" style="--primary: 0 0% 87%;--secondary: 220 14% 96%;--accent: 250 77% 45%;--highlight: 250 77% 70%;--foreground: 221 39% 11%;--background: 210 20% 98%;--spacing: 3rem;">
+		<section class="profile astro-BHGOHO6K">
+			<div class="c-idZwvW avatar astro-C6D5GEDG" style="--primary: 0 0% 87%;--secondary: 220 14% 96%;--accent: 250 77% 45%;--highlight: 250 77% 70%;--foreground: 221 39% 11%;--background: 210 20% 98%;--padding: 0.75rem;">
+  <picture class="astro-C6D5GEDG astro-EI35XRNH">
+	<source type="image/avif" srcset="/assets/mark-square.c8d16c1a_2bCV44.avif 160w,/assets/mark-square.c8d16c1a_ZAyzrY.avif 320w,/assets/mark-square.c8d16c1a_Z1j1Gx8.avif 640w" class="astro-EI35XRNH" sizes="(min-width: 640px) 25vw, 75vw"><source type="image/webp" srcset="/assets/mark-square.c8d16c1a_Z2adnM6.webp 160w,/assets/mark-square.c8d16c1a_7LeuM.webp 320w,/assets/mark-square.c8d16c1a_ZzFRzm.webp 640w" class="astro-EI35XRNH" sizes="(min-width: 640px) 25vw, 75vw"><source type="image/jpeg" srcset="/assets/mark-square.c8d16c1a_eTaqg.jpg 160w,/assets/mark-square.c8d16c1a_1CsLnY.jpg 320w,/assets/mark-square.c8d16c1a_80IAR.jpg 640w" class="astro-EI35XRNH" sizes="(min-width: 640px) 25vw, 75vw">
+	<img src="/assets/mark-square.c8d16c1a_2qAJlr.jpg" class="astro-EI35XRNH" loading="lazy" decoding="async" alt="Mark van Seventer">
+</picture>
+
+
+</div>
+<div class="c-lppfwg headline astro-C6D5GEDG" style="--primary: 0 0% 87%;--secondary: 220 14% 96%;--accent: 250 77% 45%;--highlight: 250 77% 70%;--foreground: 221 39% 11%;--background: 210 20% 98%;--padding: 0.75rem;">
+  <div class="c-lppfwg c-lppfwg-gUifyj-variant-small astro-C6D5GEDG">
+    <h1 class="c-cWxLmj c-cWxLmj-khbsLQ-variant-h2 astro-C6D5GEDG">Mark van Seventer</h1>
+    <p class="astro-C6D5GEDG"><em class="astro-C6D5GEDG">Software Engineer</em></p>
+  </div>
+  <ul class="astro-5XDQ6VAS" style="--primary: 0 0% 87%;--secondary: 220 14% 96%;--accent: 250 77% 45%;--highlight: 250 77% 70%;--foreground: 221 39% 11%;--background: 210 20% 98%;--padding: 0.75rem;--spacing: 1.5rem;">
+  <li class="astro-5XDQ6VAS">
+    <a href="https://github.com/vseventer" class="astro-5XDQ6VAS">
+      <img alt="GitHub" srcset="/assets/211904_social_github_icon_ZhGWwY.png 1x, /assets/211904_social_github_icon_Z1dhsn1.png 2x" class="astro-5XDQ6VAS astro-UXNKDZ4E" width="32" height="32" src="/assets/211904_social_github_icon_ZhGWwY_Z10g03t.png" loading="lazy" decoding="async">
+
+
+    </a>
+  </li>
+  <li class="astro-5XDQ6VAS">
+    <a href="https://linkedin.com/in/markvanseventer" class="astro-5XDQ6VAS">
+      <img alt="LinkedIn" srcset="/assets/211910_social_linkedin_icon_y2mbI.png 1x, /assets/211910_social_linkedin_icon_Zmx8Dj.png 2x" class="astro-5XDQ6VAS astro-UXNKDZ4E" width="32" height="32" src="/assets/211910_social_linkedin_icon_y2mbI_14DqrD.png" loading="lazy" decoding="async">
+
+
+    </a>
+  </li>
+  <li class="astro-5XDQ6VAS">
+    <a href="https://twitter.com/vseventer" class="astro-5XDQ6VAS">
+      <img alt="Twitter" srcset="/assets/211920_twitter_social_icon_GTvRq.png 1x, /assets/211920_twitter_social_icon_ZdEXWB.png 2x" class="astro-5XDQ6VAS astro-UXNKDZ4E" width="32" height="32" src="/assets/211920_twitter_social_icon_GTvRq_Z1GPoaY.png" loading="lazy" decoding="async">
+
+
+    </a>
+  </li>
+</ul>
+</div>
+
+
+		</section>
+
+		<section class="content astro-BHGOHO6K">
+					<div class="c-lppfwg astro-A345ZAHG" style="--primary: 0 0% 87%;--secondary: 220 14% 96%;--accent: 250 77% 45%;--highlight: 250 77% 70%;--foreground: 221 39% 11%;--background: 210 20% 98%;--padding: 0.75rem;--spacing: 1.5rem;">
+  <h2 class="c-cWxLmj astro-A345ZAHG">Posts</h2>
+  <ol class="c-lppfwg c-lppfwg-gUifyj-variant-small astro-A345ZAHG">
+    <li class="astro-A345ZAHG">
+        <a href="/static-site-generators-eleventy-and-webpack-part-2" class="astro-A345ZAHG">Static Site Generators: Eleventy and webpack (Part 2)</a>
+        <time datetime="2020-05-10" class="astro-A345ZAHG">
+          May 9, 2020
+        </time>
+      </li><li class="astro-A345ZAHG">
+        <a href="/static-site-generators-from-hugo-to-eleventy-and-parcel" class="astro-A345ZAHG">Static Site Generators: from Hugo to Eleventy and Parcel</a>
+        <time datetime="2019-12-23" class="astro-A345ZAHG">
+          Dec 22, 2019
+        </time>
+      </li><li class="astro-A345ZAHG">
+        <a href="/the-state-of-health-care-in-the-united-states" class="astro-A345ZAHG">The State of Health Care in the U.S.</a>
+        <time datetime="2019-06-16" class="astro-A345ZAHG">
+          Jun 15, 2019
+        </time>
+      </li><li class="astro-A345ZAHG">
+        <a href="/a-new-blog-what-to-expect" class="astro-A345ZAHG">A New Blog: What to Expect?</a>
+        <time datetime="2019-04-14" class="astro-A345ZAHG">
+          Apr 13, 2019
+        </time>
+      </li>
+  </ol>
+</div>
+				</section>
+	</main>
+    
+      <footer class="astro-TLB3X56P" style="--primary: 0 0% 87%;--secondary: 220 14% 96%;--accent: 250 77% 45%;--highlight: 250 77% 70%;--foreground: 221 39% 11%;--background: 210 20% 98%;">
+	<p class="c-idZwvW c-gwrEHo c-gwrEHo-xuutw-variant-small astro-TLB3X56P">
+		© 2022 Mark van Seventer
+	</p>
+</footer>
+    
+    
+  </body>
+</html>
+
+
+
