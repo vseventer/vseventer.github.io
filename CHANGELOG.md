@@ -1,6 +1,9 @@
 # Changelog
 
-## 5.0.0
+## 5.0.1 (October 22, 2022)
+* Add `.nojekyll` to fix underscore files not being served - [docs](https://github.blog/2009-12-29-bypassing-jekyll-on-github-pages/).
+
+## 5.0.0 (October 20, 2022)
 * Rewrite using [Astro](https://astro.build/).
 
 ## 4.0.0 (October 14, 2021)
