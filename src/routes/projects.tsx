@@ -9,6 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { P } from "@/components/ui/typography";
 
 import markMyJourney from "../assets/images/markmyjourney_1280p.png?w=480&imagetools";
 
@@ -28,11 +29,11 @@ export function Projects() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <p>
+                <P>
                   Enables the powerful Sharp library to be seamlessly used in
                   the terminal - e.g. during an automated build process. Exposes
                   the entire Sharp API in a chainable fashion.
-                </p>
+                </P>
               </CardContent>
             </Card>
           </a>
@@ -48,10 +49,10 @@ export function Projects() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p>
+              <P>
                 Current tools: TypeScript, TanStack Router, shadcn/ui, Tailwind,
                 Vite
-              </p>
+              </P>
             </CardContent>
           </Card>
         </li>
@@ -66,11 +67,11 @@ export function Projects() {
                 <ResponsiveImage src={markMyJourney} />
               </picture>
               <CardContent>
-                <p>
+                <P>
                   Eleventy-powered blog with heavy emphasis on geographical
                   visuals using Leaflet, covering our travels across the world
                   during 2014–2017.
-                </p>
+                </P>
               </CardContent>
             </Card>
           </a>
@@ -86,11 +87,11 @@ export function Projects() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p>
+              <P>
                 My first-ever project that I built using PHP and MySQL,
                 passionately maintained for over a year, before selling its
                 technical implementation.
-              </p>
+              </P>
             </CardContent>
           </Card>
         </li>
@@ -105,11 +106,11 @@ export function Projects() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p>
+              <P>
                 My first-ever project, built using PHP and MySQL, covering
                 soccer news, live scores, and stats. Recruited a group of soccer
                 fans who passionately maintained its content.
-              </p>
+              </P>
             </CardContent>
           </Card>
         </li>

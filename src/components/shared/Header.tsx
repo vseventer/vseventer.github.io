@@ -17,7 +17,7 @@ export function Header({ className }: React.HTMLAttributes<HTMLElement>) {
   return (
     <nav aria-label="Main Menu" className={cn("bg-white", className)}>
       <ol className="container px-0 py-4 flex gap-2">
-        <li>
+        <li className="hidden sm:block">
           <NavLink to="/" activeOptions={{ exact: true }}>
             Home
           </NavLink>
