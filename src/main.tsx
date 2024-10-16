@@ -1,14 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createRouter } from "@tanstack/react-router";
+import {
+  RouterProvider,
+  createHashHistory,
+  createRouter,
+} from "@tanstack/react-router";
 
 import { routeTree } from "./routeTree.gen";
 
 // Set up a Router instance
+const hashHistory = createHashHistory();
 const router = createRouter({
   routeTree,
-  // routeMasks: [projectsMask],
-  defaultPreload: "intent",
+  history: hashHistory,
 });
 
 // Register things for typesafety
