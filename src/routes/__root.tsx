@@ -48,7 +48,9 @@ function RootComponent() {
         <Footer className="grid-in-footer justify-center" />
       </div>
       <ScrollRestoration />
-      <TanStackRouterDevtools position="bottom-right" />
+      {import.meta.env.DEV ? (
+        <TanStackRouterDevtools position="bottom-right" />
+      ) : null}
     </>
   );
 }
